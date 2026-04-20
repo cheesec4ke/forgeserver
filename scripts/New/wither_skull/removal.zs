@@ -1,0 +1,1 @@
+<recipetype:create:haunting>.removeByName("create_netherless:wither_skull_by_haunting");

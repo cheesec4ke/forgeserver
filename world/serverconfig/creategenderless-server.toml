@@ -1,0 +1,18 @@
+
+["Pogo Mechanics"]
+	#A multiplicative value applied to the delta movement in the y-axis.
+	#Range: 0.0 ~ 2.147483647E9
+	"Pogo Base Multiplier" = 0.75
+	#A multiplicative value applied to the delta movement in the y-axis while shifting.
+	#Range: 0.0 ~ 2.147483647E9
+	"Pogo Shifting Multiplier" = 0.25
+	#A multiplicative value applied to the fall damage value while in a state able to pogo certain terrain.
+	#Range: 0.0 ~ 2.147483647E9
+	"Pogo Fall Damage Multiplier" = 0.25
+
+["Unified Effect"]
+	#Cancel attacks from the player to other living creatures/entities.
+	"Cancel Player Attacks" = true
+	#Cancel attacks to the player from other damage sources.
+	"Cancel Attacks To Player" = true
+

@@ -1,0 +1,1 @@
+<recipeType:ars_nouveau:enchanting_apparatus>.removeByName("ars_nouveau:stable_warp_scroll");

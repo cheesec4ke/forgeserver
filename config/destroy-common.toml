@@ -1,0 +1,7 @@
+#.
+#Allow the crafting and effects of Baby Blue-related products
+enableBabyBlue = true
+#.
+#Allow the crafting and effects of alcoholic products
+enableAlcohol = true
+

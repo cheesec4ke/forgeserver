@@ -1,0 +1,1 @@
+<recipetype:create:compacting>.removeByName("create_oppenheimered:compacting/nuclear_fissile_core");

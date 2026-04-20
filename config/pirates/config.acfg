@@ -1,0 +1,41 @@
+#General config for Valkyrien Pirates
+
+
+#The minimum rate the pirates will fire their cannons at
+cannon-firing-pause=40
+
+#The speed the cannonballs will fire at, default=1.7
+cannon-range=1.7
+
+#The max amount of blocks for the new ship builder, set to -1 to use the Eureka/VS version
+max-ship-blocks=-1
+
+#How many ticks should it take for an NPC controlled ship to change its target position, default 50
+controlled-ship-updates=100
+
+#Base power for cannonball shot entity, default=2.2
+base-shot-power=2.2
+
+#Based squared distance to trigger NPC ship pursuit default=10000
+pursuit-distance=10000
+
+#Planned for removal: max size of ship in blocks to spawn as a pirate ship
+max-ship-blocks=5000
+
+#Custom crew from config
+custom-crew-entity-0=minecraft:zombie
+custom-crew-entity-1=minecraft:skeleton
+custom-crew-entity-2=minecraft:creeper
+custom-crew-entity-3=minecraft:stray
+
+#Custom crew equipments- mainhand,offhand,helmet,chest,leggings,boots
+custom-crew-equipment-0=0,0,0,0,0,0
+custom-crew-equipment-1=0,0,0,0,0,0
+custom-crew-equipment-2=0,0,0,0,0,0
+custom-crew-equipment-3=0,0,0,0,0,0
+
+#Whether flying pirates should spawn in the world or not (default true) BETA!
+should-enable-flying-pirates=false
+
+#what item should be used to recruit friendly pirates in the format "minecraft:golden_apple,1" to mean 1 golden apple
+recruit-cost=minecraft:golden_apple,1

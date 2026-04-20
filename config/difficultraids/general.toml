@@ -1,0 +1,597 @@
+
+["Wave Amounts"]
+	#Going higher than 7 without adding raiders via a datapack will result in a crash. This is a known issue.
+	#Number of waves in a Raid on Easy difficulty.
+	#Range: > 1
+	waveCountEasy = 3
+	#Number of waves in a Raid on Normal difficulty.
+	#Range: > 1
+	waveCountNormal = 5
+	#Number of waves in a Raid on Hard difficulty.
+	#Range: > 1
+	waveCountHard = 7
+	#Advanced config. Only edit if you're working with the datapack configuration!
+	#Determines how the mod will handle the case where a raider does not have a spawn count defined for a wave.
+	#This can happen if the number of waves is changed, but the spawn counts list for a raider is not updated.
+	#ZERO: The raider will not spawn if it does not have a spawn count defined for the current wave.
+	#REPEAT: The raider will spawn with the last wave's (whatever the last registered wave is for it) spawn count for the current wave.
+	#Allowed Values: ZERO, REPEAT
+	arrayOverflowMode = "ZERO"
+	#If enabled, this will make it so that if a raider is not registered implicitly by DifficultRaids, or a datapack, it will not spawn in higher difficulty raids.
+	#This can be used if you want full control over raid spawns, and do not want other mods to inject their raiders if not registered by DifficultRaids or a datapack.
+	restrictiveMode = false
+
+["Raid Mechanics"]
+	#Search radius of the Bell when hit.
+	#WARNING: This can cause a decent bit of lag at high radius values because it will search more and more blocks around the village center.
+	#Vanilla Minecraft uses a radius of 48 blocks.
+	#Range: 0.0 ~ 2.147483647E9
+	bellSearchRadius = 256.0
+	#Toggles whether arrows fired by Raiders (such as Pillagers) can deal damage to other Raiders.
+	friendlyFireArrowsEnabled = false
+
+[UI]
+	#If there are fewer raiders alive than this threshold, they will be highlighted permanently. Set to 0 to disable highlighting.
+	#Range: > 0
+	highlightThreshold = 3
+	#Toggles whether Boss Bars for Elite Raiders/Bosses will show up during Raids.
+	#Disabling this will disable every boss bars added by Difficult Raids.
+	#Enabling this will create Boss Event Bars for:
+	#DifficultRaids: Nuaos, Xydrax, Voldon, Modur
+	#Illage & Spillage: Freakager, Magispeller, Spiritcaller
+	#Dungeons Mobs: Redstone Golem
+	#Leo's Illagers: Lightningcaller, Clownager
+	#You can customize each boss bars below.
+	bossBarsEnabled = true
+	#Determines if wave information will show up in the Raid Event title.
+	showWaveInformation = true
+
+["BOSS BARS"]
+	#Enabling this will create Boss Event Bars for Modur
+	ModurBossBars = true
+	#Enabling this will create Boss Event Bars for Nuaos
+	NuaosBossBar = true
+	#Enabling this will create Boss Event Bars for Voldon
+	VoldonBossBar = true
+	#Enabling this will create Boss Event Bars for Xydrax
+	XydraxBossBar = true
+	#Enabling this will create Boss Event Bars for Clownager
+	ClownagerBossBar = true
+	#Enabling this will create Boss Event Bars for Freakager
+	FreakagerBossBar = true
+	#Enabling this will create Boss Event Bars for Lightning Caller
+	LightningCallerBossBar = true
+	#Enabling this will create Boss Event Bars for Magispeller
+	MagispellerBossBar = true
+	#Enabling this will create Boss Event Bars for Dungeon Mobs Redstone Golem
+	DMRedstoneGolemBossBar = true
+	#Enabling this will create Boss Event Bars for Spiritcaller
+	SpiritcallerBossBar = true
+
+["Insanity Mode"]
+	#Activate Insanity mode.
+	#'Detecting hundreds of raiders in the region. Are you certain whatever you're doing is worth it?'
+	insanityMode = false
+	#The multiplier for the number of raiders spawned in Insanity mode.
+	#This gets applied on top of whatever difficulty a Raid is at. This will not apply to Default Raids.
+	#Range: 1.0 ~ 1.7976931348623157E308
+	insanityCountMultiplier = 3.0
+	#Toggles whether or not to display 'Insane' on the raid
+	displayInsanityMode = true
+
+#Customize which Raiders will show up in Raids. A game restart is required.
+["Enabled Raiders"]
+
+	["Enabled Raiders"."Vanilla Raiders"]
+		enableVindicators = true
+		enableEvokers = true
+		enablePillagers = true
+		enableWitches = true
+		enableRavagers = true
+
+	["Enabled Raiders".DifficultRaids]
+		enableIllusioners = true
+		enableWarriors = true
+		enableDarts = true
+		enableConductors = true
+		enableNecromancers = true
+		enableShamans = true
+		enableTanks = true
+		enableAssassins = true
+		enableFrostmages = true
+		enableAshenmancers = true
+
+	["Enabled Raiders"."Requires HuntersReturn"]
+		enableHunters = true
+
+	["Enabled Raiders"."Requires EnchantWithMob"]
+		enableEnchanters = true
+
+	["Enabled Raiders"."Requires It Takes a Pillage"]
+		enableArchers = true
+		enableSkirmishers = true
+		enableLegioners = true
+
+	["Enabled Raiders"."Requires Illage & Spillage"]
+		enableIgniters = true
+		enableTwittollagers = true
+		enablePreservers = true
+		enableAbsorbers = true
+		enableCrocofangs = true
+		enableEngineers = true
+		enableMagispellers = true
+		enableSpiritcallers = true
+		enableFreakagers = true
+		enableBossRandomizers = true
+
+	["Enabled Raiders"."Requires Savage and Ravage"]
+		enableGriefers = true
+		enableExecutioners = true
+		enableTricksters = true
+		enableSavageRavageIceologers = true
+
+	["Enabled Raiders"."Requires Leo's Illagers"]
+		enableShieldVindicator = true
+		enableLightningCaller = true
+		enableClownager = true
+		enableConfuser = true
+		enableMeteoriteCaller = true
+		enableSnowolager = true
+		enableNecromancerLeo = true
+		enableSummoner = true
+		enableTroublemaker = true
+
+	["Enabled Raiders"."Requires Dungeon Mobs"]
+		enableMountaineers = true
+		enableRoyalGuards = true
+		enableGeomancers = true
+		enableMages = true
+		enableDungeonMobsIceologers = true
+		enableWindcallers = true
+		enableSquallGolems = true
+		enableRedstoneGolems = true
+
+	["Enabled Raiders"."Requires The Conjurer"]
+		enableConjurer = false
+
+	["Enabled Raiders"."Requires Necromancer Mod Port"]
+		enableModNecromancer = true
+
+	["Enabled Raiders"."Requires Werden's Illagers +"]
+		enableSinister = true
+		enableShadomancer = true
+		enableRhinager = true
+
+	["Enabled Raiders"."Requires Guard Illagers"]
+		enableGuardillager = true
+
+	["Enabled Raiders"."Requires MobZ"]
+		enableSpiderMage = true
+		enableZombieMage = true
+		enablePillagerBoss = true
+		enableMobZIllusioner = true
+		enableBabyRavager = true
+
+	["Enabled Raiders"."Requires Illager Invasion"]
+		enablePovoker = true
+		enableInquisitor = true
+		enableMarauder = true
+		enableBasher = true
+		enableFirecaller = true
+		enableInvasionNecromancer = true
+		enableAlchemist = true
+		enableSorcerer = true
+		enableArchivist = true
+		enableInvoker = true
+
+	["Enabled Raiders"."Requires Goety"]
+		#Those settings can be overwritten by Goety
+		enableWarlock = true
+		enableMaverick = true
+		enableHeretic = true
+		enablePiker = true
+		enableRipper = true
+		enableCrusher = true
+		enableStorm_caster = true
+		enableCryologer = true
+		enablePreacher = true
+		enableConquillager = true
+		enableInquillager = true
+		enableEnvioker = true
+		enableGoetySorcerer = true
+		enableMinister = true
+		enableTrampler = true
+		enableVizier = false
+		enableApostle = false
+		enableCrone = false
+		#If you enable Redstone Golem and Redstone Monstrosity, make sure to enable them in Goety config
+		enableRedstoneGolemGoety = false
+		enableRedstoneMonstrosity = false
+
+	["Enabled Raiders"."Requires The Summoner Illager Port"]
+		enableSummoner = true
+		enableSummonerBoss = true
+
+	["Enabled Raiders"."Requires Bones Update"]
+		enableBonesNecromancer = true
+
+	["Enabled Raiders"."Requires Illager Additions"]
+		#Those settings can be overwritten by Illager Additions
+		enableRoyalGuardSpear = true
+		enableSpearman = true
+		enableSamurai = true
+		enableBeamloger = true
+		#If you enable Cowboy or Shogun, make sure to enable them in Illager Additions config
+		enableCowboy = false
+		enableShogun = false
+
+	["Enabled Raiders"."Requires The Modifiger"]
+		enableModifiger = true
+
+	["Enabled Raiders"."Requires Musketeer Illager"]
+		enableMarksman = true
+
+	["Enabled Raiders"."Requires The Masquerader"]
+		#If you change the spawn rate of this mob, make sure no other bosses from Illage & Spillage spawn in the same wave, or they will have infinite force field.
+		enableMasquerader = true
+
+	["Enabled Raiders"."Requires Bagus Mob"]
+		enableTengu = true
+		enableNinjar = true
+
+	["Enabled Raiders"."Requires Illager Revolution"]
+		enableBeastTamer = true
+		enableBladeKnight = true
+		enableScavenger = true
+		enableSoulSage = true
+		enableAcolyte = false
+		enableBulkwark = false
+
+	["Enabled Raiders"."Requires Raided"]
+		enableRaidedNecromancer = true
+		enableRaidedElectromancer = true
+		enableSavager = true
+		enableIncinerator = true
+		enableRaidedInquisitor = true
+
+	["Enabled Raiders"."Requires More Illagers"]
+		enableGunillager = true
+		enableIlligeve = true
+		enableSurpriser = true
+		enableRocketillager = true
+		enableCreepillager = true
+		enableMonsterillager = true
+
+	["Enabled Raiders"."Requires Slash Illager"]
+		enableBladeMaster = true
+
+	["Enabled Raiders"."Requires Friends & Foes"]
+		enableFriendsAndFoesIceologer = true
+
+	["Enabled Raiders"."Requires Mo' Features"]
+		enablePillagerBrute = true
+
+	["Enabled Raiders"."Requires Brazier"]
+		enableCrazed = false
+
+	["Enabled Raiders"."Requires Ravage & Cabbage"]
+		enableCabbager = true
+
+	["Enabled Raiders"."Requires CrimsonSteve's more mobs"]
+		enablePhamtomTamer = true
+		enableTRabus = true
+		enableCyborgVindicator = true
+		enableCrudeRedstoneGolem = true
+		enableCrudeRedstoneMonstrosity = true
+		enableCrimsonStevesRedstoneMonstrosity = true
+		enableMiniCrudeRedstoneGolem = true
+
+	["Enabled Raiders"."Requires All Bark, All Bite"]
+		enableHoundmaster = true
+
+	["Enabled Raiders"."Requires Karate Illager"]
+		enableKarateIllager = true
+
+	["Enabled Raiders"."Requires Illager Brute"]
+		enableIllagerBrute = true
+
+	["Enabled Raiders"."Requires Sorcerer Illager"]
+		enableSorcererIllager = true
+
+	["Enabled Raiders"."Requires Wandering Illager"]
+		enableWanderingIllager = true
+
+	["Enabled Raiders"."Requires Expado's Illagers"]
+		enableBrasher = true
+		enableBluntologer = true
+		enableCleavager = true
+		enableSpearologer = true
+		enableJuggernaut = true
+		enableBludgeoner = true
+		enableGrindicator = true
+
+	["Enabled Raiders"."Requires Francis Illagers"]
+		enablePatrologer = true
+		enableChefager = true
+		enableFrancisGrindicator = true
+		enableFrancisMage = true
+		enableChefologer = true
+		enablePyrobandit = true
+		enableFireologer = true
+		enableVrincitador = true
+		enableSandologer = true
+		enableGrummicator = true
+
+	["Enabled Raiders"."Requires Earth Mobs"]
+		enableVilerWitch = true
+
+	["Enabled Raiders"."Requires Illager World War"]
+		enablePillagerCar = true
+		enableArmedSoldier = true
+		enableVindicatorFlameThrower = true
+		enableAssaultPillager = true
+		enablePlanePillager = true
+		enableCannonPillager = true
+
+	["Enabled Raiders"."Requires Colds: Wandering Trader"]
+		enableWanderingTraitor = true
+
+	["Enabled Raiders"."Requires Just Illagers"]
+		enableDruski = true
+		enableLacher = true
+		enableCrisko = true
+		enableBlaker = true
+		enableToxicist = true
+		enableRevenant = true
+		enableAmpi = true
+
+	["Enabled Raiders"."Requires Illager Universe"]
+		enableUpgrader = true
+		enableUpgraderGold = true
+		enableUpgraderDiamond = true
+		enableShadowGoar = true
+		enablePrinzologer = true
+		enableCallologer = true
+
+	["Enabled Raiders"."Requires Pillager Boss"]
+		enablePillagerBossMod = true
+
+	["Enabled Raiders"."Requires Virtuso's Grand Battle"]
+		enableVirtuosoOfVariety = true
+
+	["Enabled Raiders"."Requires Mischief Illagers"]
+		enableMischiever = true
+		enableWithermancer = true
+		enableDoodler = true
+		enableFangclaw = true
+		enableSparkologer = true
+		enableLibravoker = true
+		enableBubbleologer = true
+		enableBassBlaster = true
+		enableImprecator = true
+		enableMagnetizer = true
+		enablePhotographer = true
+		enablePartyger = true
+
+	["Enabled Raiders"."Requires Pillagers Plus"]
+		enableSwordPillager = true
+		enableSpearIllager = true
+		enableHogRider = true
+
+	["Enabled Raiders"."Requires Immersive Engineering"]
+		enableCommando = true
+		enableFusilier = true
+		enableBulwark = true
+
+	["Enabled Raiders"."Requires Kamilskis Additions"]
+		enableBalloonPillager = true
+		enableSilverfishWrangler = true
+
+	["Enabled Raiders"."Requires Born in Chaos"]
+		enableMissionary = true
+
+	["Enabled Raiders"."Requires Eidolon: Repraised"]
+		enableEidolonNecromancer = true
+
+	["Enabled Raiders"."Requires From the Shadows"]
+		enableCleric = true
+
+	["Enabled Raiders"."Requires Rats"]
+		enablePiedPiper = true
+
+	["Enabled Raiders"."Requires Wild Delight"]
+		enableWildChef = true
+
+	["Enabled Raiders"."Requires Jerotes Village"]
+		#Everything is disabled in Jerotes Village config
+		#If you want to enable something, enable it here and in Jerotes Village config
+		enableTrumpeter = false
+		enableBlaster = false
+		enableDefector = false
+		enableMapmaker = false
+		enablebannerBearer = false
+		enableJerotesExecutioner = false
+		enableExplorer = false
+		enableSlaverySupervisor = false
+		enableCycloner = false
+		enableJavelinThrower = false
+		enableZombieKeeper = false
+		enableWildFinder = false
+		enableSubmariner = false
+		enableSpirve = false
+		enableTeleporter = false
+		enableLampWizard = false
+		enableBitterColdSorcerer = false
+		enableFireSpitter = false
+		enablePurpleSandWitch = false
+		enableWitchScholar = false
+		enableAxCrazy = false
+		enablePurpleSandHag = false
+		enableNecromancyWarlock = false
+		enableGaviler = false
+		enableBigWitch = false
+		enableFirepowerPourer = false
+		enableOminousBannerProjection = false
+		enableCohortHag = false
+
+	["Enabled Raiders"."Requires NO IXAPI"]
+		#Those settings can be overwritten by NO.IXAPI
+		enableBugler = true
+		enableArmorer = true
+		enableBiologist = true
+		enableAPIHunter = true
+		enableMourner = true
+		#If you enable the following mobs, make sure to enable them in NO.IXAPI config
+		enableAbomination = false
+		enableDrunkenness = false
+		enableFlagman = false
+		enableIntruder = false
+		enableGraveKeeper = false
+
+	["Enabled Raiders"."Requires Roost2"]
+		enableRoostRider = true
+
+	["Enabled Raiders"."Requires Snow's Bosses: Mechasent"]
+		enableMechasent = true
+
+	["Enabled Raiders"."Requires Ben's Sharks"]
+		enableThalassoger = true
+
+	["Enabled Raiders"."Requires Illager Expansions"]
+		enableEliteVindicator = true
+		enableRetaliator = true
+		enableCrindicator = true
+		enableElitePillager = true
+		enableRavagerRider = true
+
+	["Enabled Raiders"."Requires Gloom Raiders"]
+		enableNun = true
+		enableShylock = false
+		enableNewDramatist = true
+		enableSpellSword = true
+		enablePsychcW = true
+		enablePsychicM = true
+		enableHeadsman = true
+		enableNewBigNun = false
+		enableAwakenEarl = false
+		enableDramatist = false
+		enableEarl = true
+		enableFlyEarl = false
+
+	["Enabled Raiders"."Requires Ocean World"]
+		enableOceanologer = true
+
+	["Enabled Raiders"."Requires Multiverse"]
+		enableConqueror = false
+		enableTraveler = false
+
+	["Enabled Raiders"."Requires Porchers"]
+		enableBlower = true
+		enableStabber = true
+		enableHarvester = true
+
+	["Enabled Raiders"."Requires Mecha Pillager Boss"]
+		enableMechaPillager = true
+		enableMechaVindicator = true
+
+	["Enabled Raiders"."Requires The Resiliance of the Raiders"]
+		enableResilianceCrusher = true
+		enableClashager = true
+		enableShiverger = true
+
+	["Enabled Raiders"."Requires The Resistance Of Illagers"]
+		enableGuardian = true
+		enableAssailant = true
+		enableHarrier = true
+
+	["Enabled Raiders"."Requires The Vindication Of Illagers"]
+		enableVindicationPreacher = true
+		enableBlackmaster = true
+		enablePlanner = true
+		enableVisologer = true
+		enableVindicationIntruder = true
+		enableVoltologer = true
+		enableSmither = true
+		enableRager = true
+		enablePatrolCaptain = true
+		enableRaiderRandomizer = true
+
+	["Enabled Raiders"."Requires Goety Awaken"]
+		enableVindicatorChef = false
+		enableHostileRoyalGuard = false
+		enableTowerWitch = false
+
+	["Enabled Raiders"."Requires Simple Musket"]
+		enableMusketPillager = true
+
+	["Enabled Raiders"."Requires Leos Bosses"]
+		enableAncientSorcerer = false
+
+	["Enabled Raiders"."Requires Flame Forge"]
+		enableChrimsonveil = true
+
+	["Enabled Raiders"."Requires Sieging of the Illagers"]
+		enableWarlord = true
+		enableWizard = true
+		enablePileDriver = true
+		enableWarlordRavager = false
+		enableDestructor = true
+		enableGiantsager = true
+
+	["Enabled Raiders"."Requires Invade"]
+		enableFollower = false
+
+	["Enabled Raiders"."Requires Illage Art"]
+		enablePioneer = false
+		enableSpitter = false
+		enableIllagerTactician = false
+		enableKeyHolder = true
+		enableTheFireKing = true
+		enableSpiderSummoner = true
+		enableFloatingElder = true
+		enableCalamityNurse = true
+		enableGrandArchmage = true
+		enableChurchWizard = true
+
+	["Enabled Raiders"."Requires Fathomless Crimson"]
+		enableBishop = true
+
+	["Enabled Raiders"."Requires Wan Ancient Beasts"]
+		enableTamer = true
+
+	["Enabled Raiders"."Requires Better Raiders"]
+		enableBower = true
+		enableDogger = true
+		enableRaider = true
+		enableSupport = true
+		enablePhantom = true
+
+	["Enabled Raiders"."Requires Canibalism"]
+		enableButcher = true
+
+	["Enabled Raiders"."Requires HuaCheng's More Illagers"]
+		enableCapitalist = true
+		enableCrasher = true
+		enableHugeCrasher = true
+		enableMiniOrganGuard = true
+		enableOrganGuard = true
+		enableHcRedstoneGolem = true
+		enableAbyssologer = false
+
+	["Enabled Raiders"."Requires Goety Hostility"]
+		enableGHVindicatorChef = true
+		enableGHGeomancer = true
+		enableGHIceologer = true
+		enableGHSquallGolem = true
+		enableGHWindCaller = true
+		enableGH_Mountaineer = true
+
+	["Enabled Raiders"."Requires Raids:Enhanced"]
+		enableRaiderBlimp = true
+		enableGolemOfLastResort = true
+		enableRaiderDrill = true
+		enableZapper = true
+
+	["Enabled Raiders"."Requires Chill Thrill"]
+		enableCTIceologer = true
+

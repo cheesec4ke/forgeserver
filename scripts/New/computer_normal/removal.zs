@@ -1,0 +1,1 @@
+craftingTable.removeByName("computercraft:computer_normal");

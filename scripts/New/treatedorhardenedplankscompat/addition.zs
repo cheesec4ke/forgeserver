@@ -1,0 +1,1 @@
+craftingTable.addShapeless("treatedtohardened", <item:tfmg:hardened_planks>, [<item:immersiveengineering:treated_wood_horizontal>]);

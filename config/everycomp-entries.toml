@@ -1,0 +1,232 @@
+
+#Disables certain types. Note that all these configs, like in any other mod, only hide stuff from tabs and disable their recipes
+[types]
+
+	[types.leaves_type]
+
+		[types.leaves_type.ars_nouveau]
+			blue_archwood = true
+			green_archwood = true
+			purple_archwood = true
+			red_archwood = true
+
+		[types.leaves_type.occultism]
+			otherworld = true
+
+		[types.leaves_type.ars_elemental]
+			yellow_archwood = true
+
+		[types.leaves_type.biomemakeover]
+			blighted_balsa = true
+			willow = true
+			swamp_cypress = true
+			ancient_oak = true
+
+		[types.leaves_type.witherstormmod]
+			tainted = true
+
+		[types.leaves_type.alexscaves]
+			ancient = true
+
+		[types.leaves_type.regions_unexplored]
+			alpha = true
+			apple_oak = true
+			bamboo = true
+			baobab = true
+			blackwood = true
+			magnolia = true
+			cypress = true
+			dead = true
+			dead_pine = true
+			eucalyptus = true
+			flowering = true
+			golden_larch = true
+			kapok = true
+			larch = true
+			maple = true
+			mauve = true
+			orange_maple = true
+			palm = true
+			pine = true
+			blue_magnolia = true
+			pink_magnolia = true
+			redwood = true
+			red_maple = true
+			brimwood = true
+			enchanted_birch = true
+			small_oak = true
+			silver_birch = true
+			socotra = true
+			white_magnolia = true
+			willow = true
+			ashen = true
+
+		[types.leaves_type.quark]
+			ancient = true
+			blue_blossom = true
+			lavender_blossom = true
+			orange_blossom = true
+			yellow_blossom = true
+			red_blossom = true
+
+		[types.leaves_type.dungeonnowloading]
+			azuro = true
+
+		[types.leaves_type.galosphere]
+			opal = true
+
+		[types.leaves_type.minecraft]
+			pale_oak = true
+
+	[types.wood_type]
+
+		[types.wood_type.domum_ornamentum]
+			cactus = true
+			cactus_extra = true
+
+		[types.wood_type.ars_nouveau]
+			archwood = true
+
+		[types.wood_type.enlightened_end]
+			indigo = true
+			cerulean = true
+
+		[types.wood_type.biomemakeover]
+			blighted_balsa = true
+			willow = true
+			swamp_cypress = true
+			ancient_oak = true
+
+		[types.wood_type.witherstormmod]
+			tainted = true
+
+		[types.wood_type.alexscaves]
+			pewen = true
+			thornwood = true
+
+		[types.wood_type.betterarcheology]
+			rotten = true
+
+		[types.wood_type.cataclysm]
+			chorus = true
+
+		[types.wood_type.quark]
+			azalea = true
+			ancient = true
+			blossom = true
+
+		[types.wood_type.regions_unexplored]
+			alpha = true
+			baobab = true
+			blackwood = true
+			blue_bioshroom = true
+			brimwood = true
+			cobalt = true
+			cypress = true
+			dead = true
+			eucalyptus = true
+			green_bioshroom = true
+			joshua = true
+			kapok = true
+			larch = true
+			magnolia = true
+			maple = true
+			mauve = true
+			palm = true
+			pine = true
+			pink_bioshroom = true
+			redwood = true
+			socotra = true
+			willow = true
+			yellow_bioshroom = true
+
+		[types.wood_type.dungeonnowloading]
+			azuro_oak = true
+
+		[types.wood_type.minecraft]
+			pale_oak = true
+
+	[types.cake]
+
+		[types.cake.createaddition]
+			chocolate_cake = true
+			honey_cake = true
+
+#Disables specific entries
+[entries]
+
+	[entries.wood_type]
+
+		[entries.wood_type.friendsandfoes]
+			beehive = true
+
+		[entries.wood_type.farmersdelight]
+			cabinet = true
+
+		[entries.wood_type.handcrafted]
+			counter = true
+			corner_trim = true
+			fancy_bed = true
+			desk = true
+			shelf = true
+			nightstand = true
+			cupboard = true
+			dining_bench = true
+			bench = true
+			couch = true
+			table = true
+			chair = true
+			drawer = true
+			pillar_trim = true
+			side_table = true
+
+		[entries.wood_type.absentbydesign]
+			wall_stripped_log = true
+			wall_log = true
+			wall_planks = true
+			fence_log = true
+
+		[entries.wood_type.create]
+			window = true
+			window_pane = true
+
+		[entries.wood_type.quark]
+			hollow_log = true
+			vertical_planks = true
+			post = true
+			trapped_chest = true
+			bookshelf = true
+			chest = true
+			stripped_post = true
+			ladder = true
+			vertical_slab = true
+
+		[entries.wood_type.regions_unexplored]
+			branch = true
+
+		[entries.wood_type.table_top_craft]
+			connect_four = true
+			chess = true
+			chess_timer = true
+
+		[entries.wood_type.twigs]
+			table = true
+
+		[entries.wood_type.storagedrawers]
+			trim = true
+			full_drawers_2 = true
+			half_drawers_1 = true
+			full_drawers_4 = true
+			half_drawers_4 = true
+			half_drawers_2 = true
+			full_drawers_1 = true
+
+	[entries.leaves_type]
+
+		[entries.leaves_type.regions_unexplored]
+			shrub = true
+
+		[entries.leaves_type.quark]
+			hedge = true
+			leaf_carpet = true
+

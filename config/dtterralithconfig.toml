@@ -1,0 +1,11 @@
+
+["Dynamic Trees + Terralith Compat Mod Config"]
+	#If "true", implements fix for terralith's winter skylands. 
+	#Changes ordering of biome features to enable dynamic trees to generate. 
+	#Defaults to "true".
+	skylands_winter_fix_entry = true
+	#If "true", implements fixes for failed tree cancellation in terralith biomes. 
+	#Replaces tree features in biomes that tree cancellation has failed. 
+	#Defaults to "true".
+	replace_tree_features_fix_entry = true
+

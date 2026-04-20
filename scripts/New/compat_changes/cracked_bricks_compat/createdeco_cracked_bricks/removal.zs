@@ -1,0 +1,1 @@
+furnace.removeByName("createdeco:cracked_red_bricks_from_bricks_smelting");

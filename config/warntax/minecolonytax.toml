@@ -1,0 +1,939 @@
+#Optional debt limit for colony debt. If > 0, colony revenue will not deduct more once the debt reaches this limit (i.e. the tax value won't drop below -DebtLimit). Set to 0 to disable.
+#Range: > 0
+DebtLimit = 0
+#Amount of debt added to colony per guard killed when raiding colonies in debt. Only applies when DebtLimit > 0. Raiders get this amount when killing guards in debt colonies. Default: 200.
+#Range: 1 ~ 10000
+TaxStealPerGuard = 200
+
+[General]
+	#Tax generation interval in minutes
+	#Range: 1 ~ 1440
+	TaxIntervalMinutes = 60
+	#Maximum tax revenue a colony can store before it stops generating further taxes
+	#Range: > 1
+	MaxTaxRevenue = 5000
+	#Enable SDMShop conversion (true = enable, false = disable).
+	EnableSDMShopConversion = true
+	#The item name for the custom currency (e.g., 'minecraft:emerald').
+	CurrencyItemName = "minecraft:emerald"
+	#Enable console logging of tax generation details (building upgrades, max warnings, etc.). Set to false to reduce console spam during initialization.
+	ShowTaxGenerationLogs = true
+	#Enable console logging during colony building initialization. Set to false to reduce console spam during server startup. Colony initialization will still occur, just with less verbose logging.
+	ShowColonyInitializationLogs = true
+
+["War Settings"]
+	#Enable colony ownership transfer when a war is won (true = enable, false = disable).
+	EnableColonyTransfer = true
+	#If false, war will not toggle any interaction permissions
+	EnableWarActions = true
+	#If true, war requests must be manually accepted; if false, wars requests will automatically accept.
+	WarAcceptanceRequired = true
+	#Grace period between declaring wars (minutes)
+	#Range: 1 ~ 1440
+	AttackerGracePeriodMinutes = 120
+	#Grace period between raids (minutes)
+	#Range: 1 ~ 1440
+	RaidGracePeriodMinutes = 120
+	#Maximum raid duration (minutes)
+	#Range: 1 ~ 1440
+	MaxRaidDurationMinutes = 5
+	#Allow players to raid colonies even if the colony owner is offline.
+	AllowOfflineRaids = true
+	#Penalty percentage applied when a raider is killed by a defender during a raid (0.0 - 1.0)
+	#Range: 0.0 ~ 1.0
+	RaidPenaltyPercentage = 0.25
+	#Percentage of killed raider's balance transferred to defending colony for owner/officers to claim (0.0 - 1.0)
+	#Range: 0.0 ~ 1.0
+	RaidDefenseRewardPercentage = 0.15
+	#Percentage of losing players' balance awarded to each winning player. Set to 0.0 to only enable colony transfer (if enabled).
+	#Uses SDMShop balance or colony funds based on what's configured.
+	#Range: 0.0 ~ 1.0
+	WarVictoryPercentage = 0.25
+	#Percentage that each losing player loses from their balance when defeated in war.
+	#Uses SDMShop balance or colony funds based on what's configured.
+	#Range: 0.0 ~ 1.0
+	WarDefeatPercentage = 0.15
+	#Percentage that all war participants lose from their balance when a war ends in stalemate.
+	#Uses SDMShop balance or colony funds based on what's configured.
+	#Range: 0.0 ~ 1.0
+	WarStalematePercentage = 0.1
+	#Duration (in hours) to freeze colony tax generation after a war loss or stalemate.
+	#Set to 0 to disable tax freezing.
+	#Range: 0 ~ 168
+	WarTaxFreezeHours = 0
+	#Minimum number of guards required to initiate a raid. NOTE: This is only used when 'EnableRaidBuildingRequirements' is disabled. If building requirements are enabled, they take priority over this setting.
+	#Range: 1 ~ 100
+	MinGuardsToRaid = 3
+	#Enable raid guard protection system. When enabled, colonies must meet minimum defense requirements to be eligible for raids, protecting smaller/newer colonies from being overwhelmed.
+	EnableRaidGuardProtection = true
+	#Minimum number of guards a colony must have to be eligible for raids. Set to 0 to disable guard requirement. Default: 2 guards minimum.
+	#Range: 0 ~ 100
+	MinGuardsToBeRaided = 2
+	#Minimum number of guard towers a colony must have to be eligible for raids. Set to 0 to disable guard tower requirement. Default: 1 guard tower minimum.
+	#Range: 0 ~ 100
+	MinGuardTowersToBeRaided = 1
+	#Interval between tax transfers during raids (seconds)
+	#Range: 5 ~ 3600
+	RaidTaxIntervalSeconds = 60
+	#Tax transfer percentages during raids (comma-separated decimals)
+	RaidTaxPercentages = [0.1, 0.25, 0.5, 0.7]
+	#War duration (minutes)
+	#Range: 1 ~ 1440
+	WarDurationMinutes = 120
+	#Minimum guards required to declare war. NOTE: This is only used when 'EnableWarBuildingRequirements' is disabled. If building requirements are enabled, they take priority over this setting.
+	#Range: 1 ~ 100
+	MinGuardsToWageWar = 5
+	#If enabled, war participants will be switched to the 'war' LP permission group during wars.
+	#This requires LuckPerms to be installed and the 'war' group to be properly set up.
+	#The command used is: /lp user <Player> parent set war
+	EnableLPGroupSwitching = false
+	#Duration of the join phase in minutes
+	#Range: 1 ~ 30
+	JoinPhaseDurationMinutes = 5
+	#If enabled, players will keep their inventory on their last life when they die in war.
+	#This allows them to continue fighting without losing their gear, and especially important when colony transfer is enabled.
+	KeepInventoryOnLastLife = true
+	#Number of lives each player has during a war.
+	#Range: 1 ~ 100
+	PlayerLivesInWar = 5
+	#Actions permitted during a War. See https://ldtteam.github.io/MineColoniesAPI/com/minecolonies/api/colony/permissions/Action.html for a list of possible actions.
+	WarActions = ["PLACE_BLOCKS", "BREAK_BLOCKS", "TOSS_ITEM", "PICKUP_ITEM", "ATTACK_CITIZEN", "GUARDS_ATTACK", "FILL_BUCKET", "SHOOT_ARROW", "RIGHTCLICK_BLOCK", "RIGHTCLICK_ENTITY", "ATTACK_ENTITY", "EXPLODE", "HURT_CITIZEN", "HURT_VISITOR", "THROW_POTION"]
+	#Actions permitted during a Raid. See https://ldtteam.github.io/MineColoniesAPI/com/minecolonies/api/colony/permissions/Action.html for a list of possible actions.
+	RaidActions = ["TOSS_ITEM", "PICKUP_ITEM", "ATTACK_CITIZEN", "GUARDS_ATTACK", "FILL_BUCKET", "SHOOT_ARROW", "RIGHTCLICK_BLOCK", "RIGHTCLICK_ENTITY", "ATTACK_ENTITY", "EXPLODE", "HURT_CITIZEN", "HURT_VISITOR", "THROW_POTION"]
+	#Actions permitted during Abandoned Colony Claiming raids. See https://ldtteam.github.io/MineColoniesAPI/com/minecolonies/api/colony/permissions/Action.html for a list of possible actions.
+	ClaimingActions = ["PLACE_BLOCKS", "BREAK_BLOCKS", "TOSS_ITEM", "PICKUP_ITEM", "ATTACK_CITIZEN", "GUARDS_ATTACK", "FILL_BUCKET", "SHOOT_ARROW", "RIGHTCLICK_BLOCK", "RIGHTCLICK_ENTITY", "ATTACK_ENTITY", "EXPLODE", "HURT_CITIZEN", "HURT_VISITOR", "THROW_POTION", "OPEN_CONTAINER"]
+	#Number of Guard Towers required to activate a tax boost for all buildings in a colony.
+	#Range: 1 ~ 100
+	RequiredGuardTowersForBoost = 5
+	#Percentage increase in total tax revenue when required Guard Towers are built. This acts as a multiplier on the colony's total generated tax income. For example: 0.5 = 50% increase, so 1000 tax becomes 1500 tax.
+	#Range: 0.0 ~ 2.0
+	GuardTowerTaxBoostPercentage = 0.5
+	#When enabled and ENABLE_COLONY_TRANSFER is disabled, winning a war will vassalize the losing colony instead of transferring ownership.
+	#The losing colony will pay a percentage of their tax income to the winner for a set duration.
+	EnableWarVassalization = true
+	#Duration (in hours) that a war vassalization lasts.
+	#After this time, the vassalization automatically ends. Set to 0 for permanent vassalization until manually revoked.
+	#Range: 0 ~ 8760
+	WarVassalizationDurationHours = 168
+	#Percentage of the vassal colony's tax income paid to the victor as tribute (1-100).
+	#This is the tribute rate enforced when a colony is vassalized through war.
+	#Range: 1 ~ 100
+	WarVassalizationTributePercentage = 25
+	#Enable the block interaction filter system during raids and wars.
+	#When enabled, this system overrides ALL other protection systems to enforce blacklist/whitelist rules.
+	#BLACKLIST blocks CANNOT be interacted with (highest priority - prevents griefing).
+	#WHITELIST blocks CAN be interacted with (overrides normal restrictions).
+	EnableBlockInteractionFilter = true
+	#List of block IDs that CANNOT be interacted with during raids/wars (highest priority).
+	#Format:
+	#  - Specific block: 'modid:blockname' (e.g., 'minecraft:bedrock', 'minecolonies:blockhuttownhall')
+	#  - Entire mod: '#modid' (e.g., '#refinedstorage', '#mekanism')
+	#These blocks are completely protected and override any whitelist or permission settings.
+	#Default blacklist prevents interaction with critical infrastructure blocks.
+	BlockInteractionBlacklist = ["minecraft:bedrock", "minecraft:command_block", "minecraft:chain_command_block", "minecraft:repeating_command_block", "minecraft:structure_block", "minecraft:jigsaw", "minecolonies:blockhuttownhall"]
+	#List of block IDs that CAN be interacted with during raids/wars.
+	#Format:
+	#  - Specific block: 'modid:blockname' (e.g., 'minecraft:chest', 'ironchest:iron_chest')
+	#  - Entire mod: '#modid' (e.g., '#ironchest', '#sophisticatedstorage')
+	#These blocks can be opened/used even during conflicts.
+	#Common use: Allow looting chests and storage blocks.
+	#Blacklist always takes priority over whitelist!
+	BlockInteractionWhitelist = ["minecraft:chest", "minecraft:barrel", "minecraft:furnace", "minecraft:blast_furnace", "minecraft:smoker", "minecraft:dropper", "minecraft:dispenser", "minecraft:hopper"]
+	#Apply block interaction filter during wars.
+	#If enabled, blacklist/whitelist rules will be enforced during active wars.
+	BlockFilterWars = true
+	#Apply block interaction filter during raids.
+	#If enabled, blacklist/whitelist rules will be enforced during active raids.
+	BlockFilterRaids = true
+
+	["War Settings"."Entity Raid Settings"]
+		#Enable entity-triggered raids. When disabled, entities will not trigger raids even if they meet the criteria. Admin-only feature.
+		EnableEntityRaids = false
+		#List of entity types that can trigger raids. Use Minecraft entity resource IDs (e.g., 'minecraft:pillager'). Default: only Pillagers.
+		EntityRaidWhitelist = ["minecraft:pillager"]
+		#Number of whitelisted entities near a colony required to trigger a raid
+		#Range: 1 ~ 50
+		EntityRaidThreshold = 1
+		#Radius in blocks to detect entities around colonies for raid triggering (default: 50 blocks)
+		#Range: 10 ~ 500
+		EntityRaidDetectionRadius = 50
+		#If true, entity raids will only send messages to colony and allies without triggering actual raid mechanics. Set to false for full raid functionality.
+		EntityRaidMessageOnly = false
+		#Time in seconds entities have to return to colony boundaries after leaving during an entity raid
+		#Range: 1 ~ 60
+		EntityRaidBoundaryTimerSeconds = 5
+		#How often (in ticks) to check for entities near colonies. Lower values = more frequent checks but higher performance cost. 20 ticks = 1 second
+		#Range: 10 ~ 200
+		EntityRaidCheckIntervalTicks = 20
+		#Cooldown period between entity raids for the same colony (minutes)
+		#Range: 1 ~ 1440
+		EntityRaidCooldownMinutes = 30
+		#Enable detailed debug logging for EntityRaid system. When enabled, provides comprehensive logging of entity detection, filtering, and raid triggering processes.
+		EnableEntityRaidDebug = false
+		#Debug logging verbosity level for EntityRaid system:
+		#1 = Basic (raid triggers, major events)
+		#2 = Detailed (entity filtering, alliance checks)
+		#3 = Verbose (all detection steps, performance metrics)
+		#Range: 1 ~ 3
+		EntityRaidDebugLevel = 1
+		#TESTING ONLY: Bypass alliance checks to allow your own recruits to trigger raids (set to false for production)
+		BypassAllianceChecks = false
+
+	["War Settings"."PvP Kill Economy"]
+		#Enable PvP kill economy system. When enabled, killing a player transfers a percentage of their balance to the killer. Compatible with SDMShop and SDMEconomy. Disabled by default.
+		EnablePvPKillEconomy = false
+		#Percentage of victim's balance transferred to killer on PvP kill (0.0 - 1.0). For example: 0.1 = 10% of victim's money goes to killer. Uses SDMShop balance or colony funds based on configuration.
+		#Range: 0.0 ~ 1.0
+		PvPKillRewardPercentage = 0.1
+
+	["War Settings"."General Colony Permissions"]
+		#Enable general item interactions for all players in colonies. When enabled, allows non-allies to toss items and pickup items within colony boundaries.
+		EnableGeneralItemInteractions = true
+		#Actions allowed for all players in colonies when general interactions are enabled. See https://ldtteam.github.io/MineColoniesAPI/com/minecolonies/api/colony/permissions/Action.html for a list of possible actions.
+		GeneralColonyActions = ["TOSS_ITEM", "PICKUP_ITEM"]
+		#Enable resistance effect for colony guards during raids. When enabled, guards will receive a resistance effect to help defend the colony.
+		EnableGuardResistanceDuringRaids = true
+		#Level of resistance effect applied to guards during raids (1-255). Higher levels provide better protection. Set to 0 to disable even if the feature is enabled.
+		#Range: 0 ~ 255
+		GuardResistanceLevel = 2
+		#Enable happiness-based tax modifiers. When enabled, colony citizen happiness affects tax generation rates.
+		EnableHappinessTaxModifier = true
+		#Minimum tax multiplier for unhappy colonies (0.1 - 1.0). Lower values mean unhappy colonies generate less tax.
+		#Range: 0.1 ~ 1.0
+		HappinessTaxMultiplierMin = 0.5
+		#Maximum tax multiplier for very happy colonies (1.0 - 2.0). Higher values mean happy colonies generate more tax.
+		#Range: 1.0 ~ 2.0
+		HappinessTaxMultiplierMax = 1.5
+		#Enable colony inactivity tax pause system. When enabled, colonies that haven't been visited by owners/officers for the specified time will stop generating taxes.
+		EnableColonyInactivityTaxPause = true
+		#Hours of inactivity after which a colony will stop generating taxes. This uses MineColonies' built-in player interaction tracking.
+		#Range: 1 ~ 8760
+		ColonyInactivityHoursThreshold = 168
+		#Enable extortion system for wars. When enabled, defenders can choose to pay extortion instead of fighting when WarAcceptanceRequired is false.
+		EnableExtortionSystem = true
+		#Default extortion percentage when not specified by attacker (0.0 - 1.0). For example: 0.15 = 15% of defender's balance.
+		#Range: 0.0 ~ 1.0
+		DefaultExtortionPercentage = 0.15
+		#Time limit in minutes for defenders to respond to extortion offers before war automatically starts.
+		#Range: 1 ~ 30
+		ExtortionResponseTimeMinutes = 5
+		#Hours of immunity from new extortion attempts after successfully paying extortion.
+		#Range: 1 ~ 168
+		ExtortionImmunityHours = 24
+		#Enable citizen militia system during raids. When enabled, citizens will temporarily become guards to defend the colony. Set to false to use the old raid system.
+		EnableCitizenMilitia = true
+		#Percentage of eligible citizens to convert to militia guards during raids (0.0 - 1.0). For example: 0.3 = 30% of citizens become militia.
+		#Range: 0.0 ~ 1.0
+		MilitiaConversionPercentage = 0.3
+		#Minimum level required for a citizen to be eligible for militia conversion. Higher levels = more experienced citizens only.
+		#Range: 1 ~ 99
+		MilitiaMinCitizenLevel = 3
+		#If true, militia guards and regular guards will actively seek out and engage raiders instead of just defending their posts.
+		MilitiaGuardsSeekRaiders = true
+		#If true, raiders steal tax based on guards killed. If false, uses the old time-based tax stealing system.
+		TaxStealPerGuardKilled = true
+		#Percentage of colony tax stolen per guard/militia killed during a raid (0.0 - 1.0). For example: 0.1 = 10% tax stolen per guard killed.
+		#Range: 0.0 ~ 1.0
+		TaxStealPercentagePerGuard = 0.1
+		#Maximum percentage of colony tax that can be stolen during a raid (0.0 - 1.0). This amount is distributed across all guards/militia. For example: 0.5 = 50% max tax stolen when all defenders are killed.
+		#Range: 0.0 ~ 1.0
+		MaxRaidTaxPercentage = 0.5
+		#If true, resistance effects during raids/wars will also be applied to all citizens, not just guards. This makes the entire colony more defensive.
+		ApplyResistanceToCitizens = false
+
+	["War Settings"."Colony Auto-Abandon"]
+		#Enable automatic colony abandonment when owners/officers haven't visited for the configured time. When enabled, colonies will be automatically abandoned and can be claimed by other players.
+		EnableColonyAutoAbandon = true
+		#Days of inactivity after which a colony will be automatically abandoned. This is measured by the last time any owner or officer visited the colony. Default: 14 days (2 weeks)
+		#Range: 1 ~ 365
+		ColonyAutoAbandonDays = 14
+		#If true, owners and officers will be notified before their colony is abandoned. Requires warning days to be configured.
+		NotifyOwnersBeforeAbandon = true
+		#Days before abandonment to warn owners and officers. Warnings are sent when they log in during this period.
+		#Range: 1 ~ 30
+		AbandonWarningDays = 3
+		#Allow ALL players to use /wnt listabandoned command.
+		#When FALSE (default): Only OPs (permission level 2+) can view abandoned colonies.
+		#When TRUE: Any player can view the list of abandoned colonies available for claiming.
+		EnableListAbandonedForAll = false
+
+	["War Settings"."Abandoned Colony Claiming"]
+		#Enable claiming of abandoned colonies using the /wnt claimcolony command. When enabled, players can claim abandoned colonies, triggering a raid where all citizens become hostile militia.
+		EnableAbandonedColonyClaiming = true
+		#Minimum number of guards required to claim an abandoned colony. This ensures only established colonies can claim others.
+		#Range: 1 ~ 50
+		MinGuardsForClaimingRaid = 3
+		#Duration in minutes for the claiming raid when taking over an abandoned colony. During this time, all citizens will be hostile and attack the claiming player.
+		#Range: 1 ~ 60
+		ClaimingRaidDurationMinutes = 5
+		#Grace period in hours before a player can claim another colony. This prevents players from claiming multiple colonies in quick succession.
+		#Range: 1 ~ 168
+		ClaimingGracePeriodHours = 24
+		#If true, spawn mercenaries to defend the colony during claiming if there are fewer than 5 citizens/guards. This ensures abandoned colonies still put up a fight when being claimed.
+		SpawnMercenariesIfLowDefenders = true
+		#Building requirements to claim abandoned colonies. Format: 'building:level,building:level'. Example: 'townhall:2,guardtower:1' means player needs townhall level 2+ and at least one guard tower to claim. Leave empty to disable building requirements.
+		ClaimingBuildingRequirements = "townhall:2"
+
+	["War Settings"."Raid Building Requirements"]
+		#Enable building requirements for initiating raids. When enabled, these requirements take PRIORITY over 'MinGuardsToRaid' setting. Disable this to use the legacy guard count system instead.
+		EnableRaidBuildingRequirements = true
+		#Building requirements to initiate raids. Format: 'building:level:amount,building:level:amount'. Example: 'townhall:1:1,guardtower:1:3' means player needs 1 townhall level 1+ and 3 guard towers level 1+ to raid. NOTE: When this is enabled, it replaces the 'MinGuardsToRaid' requirement entirely. Leave empty to disable building requirements.
+		RaidBuildingRequirements = "townhall:1:1,guardtower:1:3"
+
+	["War Settings"."War Building Requirements"]
+		#Enable building requirements for declaring wars. When enabled, these requirements take PRIORITY over 'MinGuardsToWageWar' setting. Disable this to use the legacy guard count system instead.
+		EnableWarBuildingRequirements = true
+		#Building requirements to declare wars. Format: 'building:level:amount,building:level:amount'. Example: 'townhall:2:1,guardtower:1:3,buildershut:1:1,house:1:1' means player needs 1 townhall level 2+, 3 guard towers level 1+, 1 builders hut level 1+, and 1 residential building level 1+ to declare war. NOTE: When this is enabled, it replaces the 'MinGuardsToWageWar' requirement entirely. Leave empty to disable building requirements.
+		WarBuildingRequirements = "townhall:2:1,guardtower:1:3,buildershut:1:1,house:1:1"
+
+	["War Settings"."Recipe Disabling"]
+		#Disable all Minecolonies building hut recipes. When enabled, players must obtain building huts through SDMShop or Admin Shop instead of crafting them. This affects all buildings that accumulate taxes or maintenance costs. Disabled by default.
+		DisableHutRecipes = false
+
+	["War Settings"."Web API"]
+		#Enable the Web API server for external data access. When enabled, war statistics and other data can be queried via HTTP REST endpoints. IMPORTANT: Only enable this if you understand the security implications. The API runs SERVER-SIDE ONLY and requires proper port forwarding if accessed from outside your network. Default: false (disabled)
+		EnableWebAPI = false
+		#Port number for the Web API server. Make sure this port is not already in use by another application. Common ports: 8080, 8090, 9000. Avoid ports below 1024 (requires admin privileges). You may need to configure port forwarding on your router for external access. Default: 8090
+		#Range: 1024 ~ 65535
+		WebAPIPort = 8090
+		#API authentication key for secure access. This key must be provided in the 'X-API-Key' header for all requests when authentication is enabled. Generate a strong, random key (recommended: 32+ characters). Example: 'my-super-secret-api-key-12345-abcdef' SECURITY WARNING: Keep this key private! Anyone with this key can access your server data. Default: empty (you must set this to enable authentication)
+		WebAPIKey = ""
+		#Maximum number of API requests allowed per IP address per minute. Prevents abuse and excessive server load from a single source. Set to 0 to disable rate limiting (not recommended for public servers). Default: 60 (1 request per second average)
+		#Range: 0 ~ 1000
+		WebAPIRateLimitRequestsPerMinute = 60
+		#Require API key authentication for all requests. When enabled, requests without a valid 'X-API-Key' header will be rejected with 401 Unauthorized. When disabled, anyone can query the API (use with caution!). SECURITY: Always enable this for public servers. Only disable for local testing. Default: true (authentication required)
+		WebAPIRequireAuthentication = true
+		#Enable offline player data in API responses. When enabled, the API can return statistics for offline players by scanning player data files. This requires periodic file scanning and caching, which uses more memory and disk I/O. Use the 'includeOffline=true' query parameter to request offline data. PERFORMANCE: Only enable if you need offline player stats on your website. Default: false (online players only)
+		WebAPIEnableOfflinePlayers = false
+		#How often to refresh the offline player data cache (in minutes). The server will scan player data files at this interval to update offline player statistics. Lower values = more current data but higher disk I/O. Higher values = less load but stale data. Only used when 'WebAPIEnableOfflinePlayers' is true. Recommended: 5-15 minutes for active servers, 30-60 minutes for larger servers. Default: 10 minutes
+		#Range: 1 ~ 1440
+		WebAPICacheRefreshMinutes = 10
+
+	["War Settings"."Patchouli Book"]
+		#Give players the War & Taxes Codex (Patchouli guide book) when they first join the server.
+		#Requires Patchouli mod to be installed. Book is only given once per player.
+		GivePatchouliBookOnJoin = true
+		#Show admin/configuration pages in the Patchouli guide book.
+		#When disabled, the Configuration category with admin commands and settings is hidden from players.
+		ShowAdminPagesInBook = false
+
+	["War Settings"."Tax Expansion - Economy [WIP]"]
+
+		["War Settings"."Tax Expansion - Economy [WIP]"."Tax Policies"]
+			#Enable tax policy system. Colonies can choose policies that affect tax generation and citizen happiness.
+			EnableTaxPolicies = true
+			#Revenue modifier for LOW tax policy. Negative = less tax. Example: -0.25 = 25% less revenue.
+			#Range: -1.0 ~ 0.0
+			LowPolicyRevenueModifier = -0.25
+			#Happiness modifier for LOW tax policy. Positive = happier citizens. Example: 0.20 = 20% faster happiness growth.
+			#Range: 0.0 ~ 1.0
+			LowPolicyHappinessModifier = 0.2
+			#Revenue modifier for HIGH tax policy. Positive = more tax. Example: 0.25 = 25% more revenue.
+			#Range: 0.0 ~ 1.0
+			HighPolicyRevenueModifier = 0.25
+			#Happiness modifier for HIGH tax policy. Negative = unhappier citizens. Example: -0.15 = 15% slower happiness.
+			#Range: -1.0 ~ 0.0
+			HighPolicyHappinessModifier = -0.15
+			#Revenue modifier for WAR ECONOMY policy. High boost during wartime. Example: 0.50 = 50% more revenue.
+			#Range: 0.0 ~ 2.0
+			WarPolicyRevenueModifier = 0.5
+			#Happiness modifier for WAR ECONOMY policy. Citizens dislike war economy. Example: -0.25 = 25% happiness penalty.
+			#Range: -1.0 ~ 0.0
+			WarPolicyHappinessModifier = -0.25
+
+		["War Settings"."Tax Expansion - Economy [WIP]"."Tax Reports"]
+			#Enable tax report generation as written books. Use /wnt taxreport to generate.
+			EnableTaxReports = true
+			#Hours before tax report books auto-delete from inventory. Set to 0 to never auto-delete.
+			#Range: 0 ~ 720
+			TaxReportAutoDeleteHours = 0
+			#Maximum days of tax history to track for reports.
+			#Range: 1 ~ 365
+			TaxReportMaxHistoryDays = 30
+
+		["War Settings"."Tax Expansion - Economy [WIP]".Leaderboards]
+			#Enable server-wide leaderboards for tax earnings, wars won, etc.
+			EnableLeaderboards = true
+			#How often leaderboards are recalculated (in minutes).
+			#Range: 5 ~ 1440
+			LeaderboardUpdateIntervalMinutes = 60
+			#Number of entries to show in leaderboard commands.
+			#Range: 5 ~ 50
+			LeaderboardTopCount = 10
+
+	["War Settings"."Tax Expansion - Factions [WIP]"]
+		#Enable faction system. Colonies can form factions with shared tax pools and trade routes.
+		EnableFactionSystem = true
+		#Maximum number of colonies that can join a single faction.
+		#Range: 2 ~ 50
+		MaxFactionMembers = 10
+		#Tax cost to create a new faction.
+		#Range: 0 ~ 100000
+		FactionCreationCost = 1000
+		#Maximum number of allied factions a faction can have.
+		#Range: 0 ~ 20
+		FactionAllianceLimit = 3
+
+		["War Settings"."Tax Expansion - Factions [WIP]"."Shared Tax Pool"]
+			#Enable shared tax pool for factions. Member colonies contribute a percentage to the pool.
+			EnableSharedTaxPool = true
+			#Default percentage of tax income that faction members contribute to the shared pool.
+			#Range: 0 ~ 100
+			DefaultPoolContributionPercent = 10
+			#Maximum balance the shared tax pool can hold.
+			#Range: > 1000
+			MaxPoolBalance = 100000
+			#Days to retain pool transaction history for reporting.
+			#Range: 1 ~ 365
+			PoolHistoryRetentionDays = 30
+
+		["War Settings"."Tax Expansion - Factions [WIP]"."Trade Routes"]
+			#Enable trade routes between allied colonies. Trade routes generate passive income based on distance.
+			EnableTradeRoutes = true
+			#Tax income generated per chunk of distance on a trade route (per tax cycle).
+			#Range: 1 ~ 100
+			TradeRouteIncomePerChunk = 5
+			#Maximum distance in chunks for a trade route. Longer routes = more income but higher maintenance.
+			#Range: 10 ~ 10000
+			TradeRouteMaxDistanceChunks = 1000
+			#Maintenance cost per trade route per tax cycle.
+			#Range: 0 ~ 10000
+			TradeRouteMaintenanceCost = 50
+			#Maximum number of trade routes a colony can have active.
+			#Range: 1 ~ 20
+			MaxTradeRoutesPerColony = 3
+
+	["War Settings"."Tax Expansion - Espionage [WIP]"]
+		#Enable the spy/sabotage system. Colonies can spend tax to perform espionage on rivals.
+		EnableSpySystem = true
+		#Cooldown in minutes between spy actions against the same colony.
+		#Range: 1 ~ 1440
+		SpyCooldownMinutes = 60
+		#Base chance (0.0-1.0) of being detected when performing spy actions. Each action adds its own detection modifier.
+		#Range: 0.0 ~ 1.0
+		SpyDetectionBaseChance = 0.15
+
+		["War Settings"."Tax Expansion - Espionage [WIP]"."Action Costs"]
+			#Tax cost for SCOUT action (reveals enemy colony's current tax balance).
+			#Range: 0 ~ 100000
+			ScoutCost = 100
+			#Tax cost for SABOTAGE action (reduces target's next tax cycle).
+			#Range: 0 ~ 100000
+			SabotageCost = 500
+			#Tax cost for BRIBE GUARDS action (disables guards during next raid).
+			#Range: 0 ~ 100000
+			BribeGuardsCost = 1000
+			#Tax cost for STEAL SECRETS action (copy building synergy bonuses temporarily).
+			#Range: 0 ~ 100000
+			StealSecretsCost = 750
+
+		["War Settings"."Tax Expansion - Espionage [WIP]"."Action Effects"]
+			#Percentage reduction to target's tax for the next cycle when sabotaged (0.0-1.0). Example: 0.25 = 25% less tax.
+			#Range: 0.0 ~ 1.0
+			SabotageTaxReductionPercent = 0.25
+			#Number of guards disabled when BRIBE GUARDS action succeeds.
+			#Range: 1 ~ 20
+			BribeGuardsDisabledCount = 2
+			#Duration in hours that stolen building synergy bonuses last.
+			#Range: 1 ~ 168
+			StealSecretsDurationHours = 24
+
+		["War Settings"."Tax Expansion - Espionage [WIP]"."Detection Chances"]
+			#Additional detection chance for SCOUT action (0.0-1.0). Low risk action.
+			#Range: 0.0 ~ 1.0
+			ScoutDetectionChance = 0.05
+			#Additional detection chance for SABOTAGE action (0.0-1.0). Medium risk.
+			#Range: 0.0 ~ 1.0
+			SabotageDetectionChance = 0.25
+			#Additional detection chance for BRIBE GUARDS action (0.0-1.0). High risk.
+			#Range: 0.0 ~ 1.0
+			BribeGuardsDetectionChance = 0.35
+			#Additional detection chance for STEAL SECRETS action (0.0-1.0). Medium-high risk.
+			#Range: 0.0 ~ 1.0
+			StealSecretsDetectionChance = 0.2
+
+	["War Settings"."Tax Expansion - War Mechanics [WIP]"]
+
+		["War Settings"."Tax Expansion - War Mechanics [WIP]"."War Chest"]
+			#Enable war chest system. Colonies must have funds in war chest to declare war. War chest drains during active war.
+			EnableWarChest = true
+			#Minimum war chest balance required as percentage of target colony's tax balance (0.0-1.0). Example: 0.25 = need 25% of target's balance to declare war.
+			#Range: 0.0 ~ 2.0
+			WarChestMinPercentOfTarget = 0.25
+			#Amount drained from war chest per minute during active war.
+			#Range: 0 ~ 10000
+			WarChestDrainPerMinute = 100
+			#Maximum capacity of the war chest. Prevents hoarding.
+			#Range: > 1000
+			WarChestMaxCapacity = 50000
+			#If true, war automatically ends in surrender when war chest is depleted.
+			WarChestAutoSurrenderEnabled = true
+			#Percentage of tax revenue to automatically deposit into war chest each tax cycle (0.0-1.0). Example: 0.10 = 10% of each tax collection auto-deposited.
+			#Range: 0.0 ~ 1.0
+			WarChestAutoDepositPercent = 0.1
+			#If true, raids require war chest funds. Cost is one-time payment based on target's tax generation.
+			RaidWarChestEnabled = true
+			#Raid cost as percentage of target colony's tax per interval (0.0-1.0). Example: 0.10 = raiding costs 10% of what target earns per tax cycle.
+			#Range: 0.0 ~ 2.0
+			RaidWarChestCostPercent = 0.1
+			#Percentage reduction in tax generation for raided colony (0.0-1.0). Example: 0.25 = 25% less tax after being raided.
+			#Range: 0.0 ~ 1.0
+			RaidPenaltyTaxReductionPercent = 0.25
+			#Duration in hours that the raid tax penalty lasts.
+			#Range: 1 ~ 168
+			RaidPenaltyDurationHours = 24
+			#Cost to repair colony and remove raid penalty, as percentage of colony's total tax earnings (0.0-1.0). Example: 0.50 = repairing costs 50% of colony's tax balance.
+			#Range: 0.0 ~ 2.0
+			RaidRepairCostPercent = 0.5
+
+		["War Settings"."Tax Expansion - War Mechanics [WIP]"."War Exhaustion"]
+			#Enable war exhaustion. Colonies generate less tax during active wars and need recovery time after.
+			EnableWarExhaustion = true
+			#Percentage reduction in tax generation during active war (0.0-1.0). Example: 0.30 = 30% less tax during war.
+			#Range: 0.0 ~ 1.0
+			WarTaxReductionPercent = 0.3
+			#Hours after war ends for colony tax generation to fully recover.
+			#Range: 0 ~ 720
+			PostWarRecoveryHours = 48
+
+		["War Settings"."Tax Expansion - War Mechanics [WIP]"."War Reparations"]
+			#Enable war reparations debuff for colonies that lose wars frequently.
+			EnableWarReparations = true
+			#Percentage penalty to tax generation while under reparations (0.0-1.0). Example: 0.20 = 20% less tax.
+			#Range: 0.0 ~ 1.0
+			ReparationsTaxPenaltyPercent = 0.2
+			#Duration in hours that war reparations debuff lasts.
+			#Range: 1 ~ 720
+			ReparationsDurationHours = 72
+			#Number of wars lost within 7 days to trigger reparations debuff.
+			#Range: 1 ~ 20
+			ReparationsTriggerLossesCount = 3
+
+		["War Settings"."Tax Expansion - War Mechanics [WIP]"."Ransom System"]
+			#Enable ransom system. When colony owner dies during raid, attacker can demand ransom to end raid.
+			EnableRansomSystem = true
+			#Default ransom amount as percentage of victim's tax balance (0.0-1.0). Example: 0.15 = 15% of their balance.
+			#Range: 0.0 ~ 1.0
+			RansomDefaultPercent = 0.15
+			#Minimum ransom amount (floors the percentage calculation).
+			#Range: 0 ~ 100000
+			RansomMinAmount = 100
+			#Maximum ransom amount (caps the percentage calculation).
+			#Range: > 100
+			RansomMaxAmount = 10000
+			#Seconds victim has to respond to ransom offer before it expires.
+			#Range: 10 ~ 300
+			RansomTimeoutSeconds = 60
+			#Cooldown in minutes before same attacker can offer ransom to same victim.
+			#Range: 1 ~ 1440
+			RansomCooldownMinutes = 30
+			#Hours of immunity from raids after paying a ransom.
+			#Range: 0 ~ 168
+			RansomImmunityAfterPaymentHours = 24
+
+	["War Settings"."Tax Expansion - Money Sinks [WIP]"]
+		#Enable investment system. Colonies can spend tax for permanent or temporary bonuses.
+		EnableInvestments = true
+		#Factor applied to each subsequent investment purchase (0.0-1.0). Example: 0.9 = each purchase is 90% as effective as the previous.
+		#Range: 0.1 ~ 1.0
+		InvestmentDiminishingReturnsFactor = 0.9
+
+		["War Settings"."Tax Expansion - Money Sinks [WIP]"."Infrastructure Investment"]
+			#Tax cost for infrastructure investment (permanent tax bonus).
+			#Range: 100 ~ 1000000
+			InfrastructureCost = 1000
+			#Permanent tax generation bonus per infrastructure investment (0.0-1.0). Example: 0.05 = 5% more tax generation.
+			#Range: 0.01 ~ 0.5
+			InfrastructureBonus = 0.05
+			#Maximum number of infrastructure investments a colony can have.
+			#Range: 1 ~ 100
+			InfrastructureMaxStacks = 10
+
+		["War Settings"."Tax Expansion - Money Sinks [WIP]"."Guard Training Investment"]
+			#Tax cost for guard training investment (temporary damage bonus).
+			#Range: 50 ~ 100000
+			GuardTrainingCost = 500
+			#Damage bonus for guards after training (0.0-1.0). Example: 0.10 = 10% more damage.
+			#Range: 0.01 ~ 1.0
+			GuardTrainingDamageBonus = 0.1
+			#Duration in hours that guard training bonus lasts.
+			#Range: 1 ~ 168
+			GuardTrainingDurationHours = 24
+
+		["War Settings"."Tax Expansion - Money Sinks [WIP]"."Festival Investment"]
+			#Tax cost to host a festival (temporary happiness bonus).
+			#Range: 100 ~ 1000000
+			FestivalCost = 2000
+			#Happiness bonus during festival (0.0-1.0). Example: 0.50 = 50% faster happiness growth.
+			#Range: 0.1 ~ 2.0
+			FestivalHappinessBonus = 0.5
+			#Duration in hours that festival happiness bonus lasts.
+			#Range: 1 ~ 168
+			FestivalDurationHours = 48
+
+		["War Settings"."Tax Expansion - Money Sinks [WIP]"."Research Investment"]
+			#Tax cost for research investment (spy defense bonus).
+			#Range: 100 ~ 1000000
+			ResearchCost = 1500
+			#Bonus to spy detection chance while research is active (0.0-1.0). Example: 0.50 = 50% higher chance to detect enemy spies.
+			#Range: 0.1 ~ 2.0
+			ResearchSpyDefenseBonus = 0.5
+			#Duration in days that research spy defense bonus lasts.
+			#Range: 1 ~ 30
+			ResearchDurationDays = 7
+
+["PvP Arena Settings"]
+	#Allow players to use commands while in a PvP battle. It's recommended to keep this false to prevent exploits.
+	allowCommandsInBattle = false
+	#Cooldown in seconds before a player can send another duel challenge.
+	#Range: 1 ~ 300
+	challengeCooldownSeconds = 5
+	#Cooldown in seconds before a player can organize another team battle.
+	#Range: 1 ~ 600
+	teamBattleCooldownSeconds = 30
+	#Default duration of a battle in seconds before it ends in a draw.
+	#Range: 60 ~ 3600
+	battleDurationSeconds = 300
+	#The countdown in seconds before a team battle starts after enough players have joined.
+	#Range: 5 ~ 120
+	teamBattleStartCountdownSeconds = 20
+	#Time in seconds before battle ends after victory is decided.
+	#Range: 1 ~ 60
+	BattleEndCountdownSeconds = 10
+	#Prevents players from damaging teammates in team PvP battles.
+	DisableFriendlyFire = true
+
+["Military Maintenance Costs"]
+	#Base maintenance cost per hour for Barracks (Range: 0-10000)
+	#Range: 0.0 ~ 10000.0
+	barracksMaintenance = 15.0
+	#Additional maintenance per level for Barracks (Range: 0-1000)
+	#Range: 0.0 ~ 1000.0
+	barracksMaintenanceUpgrade = 5.0
+	#Base maintenance cost per hour for Guard Tower (Range: 0-10000)
+	#Range: 0.0 ~ 10000.0
+	guardtowerMaintenance = 10.0
+	#Additional maintenance per level for Guard Tower (Range: 0-1000)
+	#Range: 0.0 ~ 1000.0
+	guardtowerMaintenanceUpgrade = 3.0
+	#Base maintenance cost per hour for Barracks Tower (Range: 0-10000)
+	#Range: 0.0 ~ 10000.0
+	barrackstowerMaintenance = 14.0
+	#Additional maintenance per level for Barracks Tower (Range: 0-1000)
+	#Range: 0.0 ~ 1000.0
+	barrackstowerMaintenanceUpgrade = 6.0
+	#Base maintenance cost per hour for Archery (Range: 0-10000)
+	#Range: 0.0 ~ 10000.0
+	archeryMaintenance = 12.0
+	#Additional maintenance per level for Archery (Range: 0-1000)
+	#Range: 0.0 ~ 1000.0
+	archeryMaintenanceUpgrade = 6.0
+	#Base maintenance cost per hour for Combat Academy (Range: 0-10000)
+	#Range: 0.0 ~ 10000.0
+	combatacademyMaintenance = 14.0
+	#Additional maintenance per level for Combat Academy (Range: 0-1000)
+	#Range: 0.0 ~ 1000.0
+	combatacademyMaintenanceUpgrade = 6.0
+
+["Building Taxes"]
+	#Base tax for Alchemist
+	#Range: 0.0 ~ 10000.0
+	alchemist = 12.0
+	#Tax increase per level for Alchemist
+	#Range: 0.0 ~ 10000.0
+	alchemistUpgrade = 5.0
+	#Base tax for Concrete Mixer
+	#Range: 0.0 ~ 10000.0
+	concretemixer = 10.0
+	#Tax increase per level for Concrete Mixer
+	#Range: 0.0 ~ 10000.0
+	concretemixerUpgrade = 4.0
+	#Base tax for Fletcher
+	#Range: 0.0 ~ 10000.0
+	fletcher = 9.0
+	#Tax increase per level for Fletcher
+	#Range: 0.0 ~ 10000.0
+	fletcherUpgrade = 3.0
+	#Base tax for Lumberjack
+	#Range: 0.0 ~ 10000.0
+	lumberjack = 11.0
+	#Tax increase per level for Lumberjack
+	#Range: 0.0 ~ 10000.0
+	lumberjackUpgrade = 5.0
+	#Base tax for Rabbit Hutch
+	#Range: 0.0 ~ 10000.0
+	rabbithutch = 8.0
+	#Tax increase per level for Rabbit Hutch
+	#Range: 0.0 ~ 10000.0
+	rabbithutchUpgrade = 2.0
+	#Base tax for Shepherd
+	#Range: 0.0 ~ 10000.0
+	shepherd = 9.0
+	#Tax increase per level for Shepherd
+	#Range: 0.0 ~ 10000.0
+	shepherdUpgrade = 3.0
+	#Base tax for Smeltery
+	#Range: 0.0 ~ 10000.0
+	smeltery = 15.0
+	#Tax increase per level for Smeltery
+	#Range: 0.0 ~ 10000.0
+	smelteryUpgrade = 6.0
+	#Base tax for Swine Herder
+	#Range: 0.0 ~ 10000.0
+	swineherder = 10.0
+	#Tax increase per level for Swine Herder
+	#Range: 0.0 ~ 10000.0
+	swineherderUpgrade = 4.0
+	#Base tax for Town Hall
+	#Range: 0.0 ~ 10000.0
+	townhall = 20.0
+	#Tax increase per level for Town Hall
+	#Range: 0.0 ~ 10000.0
+	townhallUpgrade = 8.0
+	#Base tax for Warehouse Deliveryman
+	#Range: 0.0 ~ 10000.0
+	warehousedeliveryman = 12.0
+	#Tax increase per level for Warehouse Deliveryman
+	#Range: 0.0 ~ 10000.0
+	warehousedeliverymanUpgrade = 5.0
+	#Base tax for Bakery
+	#Range: 0.0 ~ 10000.0
+	bakery = 10.0
+	#Tax increase per level for Bakery
+	#Range: 0.0 ~ 10000.0
+	bakeryUpgrade = 4.0
+	#Base tax for Blacksmith
+	#Range: 0.0 ~ 10000.0
+	blacksmith = 18.0
+	#Tax increase per level for Blacksmith
+	#Range: 0.0 ~ 10000.0
+	blacksmithUpgrade = 8.0
+	#Base tax for Builder
+	#Range: 0.0 ~ 10000.0
+	builder = 8.0
+	#Tax increase per level for Builder
+	#Range: 0.0 ~ 10000.0
+	builderUpgrade = 4.0
+	#Base tax for Chicken Herder
+	#Range: 0.0 ~ 10000.0
+	chickenherder = 9.0
+	#Tax increase per level for Chicken Herder
+	#Range: 0.0 ~ 10000.0
+	chickenherderUpgrade = 3.0
+	#Base tax for Composter
+	#Range: 0.0 ~ 10000.0
+	composter = 6.0
+	#Tax increase per level for Composter
+	#Range: 0.0 ~ 10000.0
+	composterUpgrade = 2.0
+	#Base tax for Cook
+	#Range: 0.0 ~ 10000.0
+	cook = 12.0
+	#Tax increase per level for Cook
+	#Range: 0.0 ~ 10000.0
+	cookUpgrade = 5.0
+	#Base tax for Cowboy
+	#Range: 0.0 ~ 10000.0
+	cowboy = 9.0
+	#Tax increase per level for Cowboy
+	#Range: 0.0 ~ 10000.0
+	cowboyUpgrade = 4.0
+	#Base tax for Crusher
+	#Range: 0.0 ~ 10000.0
+	crusher = 13.0
+	#Tax increase per level for Crusher
+	#Range: 0.0 ~ 10000.0
+	crusherUpgrade = 6.0
+	#Base tax for Deliveryman
+	#Range: 0.0 ~ 10000.0
+	deliveryman = 12.0
+	#Tax increase per level for Deliveryman
+	#Range: 0.0 ~ 10000.0
+	deliverymanUpgrade = 5.0
+	#Base tax for Farmer
+	#Range: 0.0 ~ 10000.0
+	farmer = 11.0
+	#Tax increase per level for Farmer
+	#Range: 0.0 ~ 10000.0
+	farmerUpgrade = 5.0
+	#Base tax for Fisherman
+	#Range: 0.0 ~ 10000.0
+	fisherman = 10.0
+	#Tax increase per level for Fisherman
+	#Range: 0.0 ~ 10000.0
+	fishermanUpgrade = 4.0
+	#Base tax for Residence
+	#Range: 0.0 ~ 10000.0
+	home = 5.0
+	#Tax increase per level for Residence
+	#Range: 0.0 ~ 10000.0
+	homeUpgrade = 2.0
+	#Base tax for Library
+	#Range: 0.0 ~ 10000.0
+	library = 13.0
+	#Tax increase per level for Library
+	#Range: 0.0 ~ 10000.0
+	libraryUpgrade = 6.0
+	#Base tax for University
+	#Range: 0.0 ~ 10000.0
+	university = 20.0
+	#Tax increase per level for University
+	#Range: 0.0 ~ 10000.0
+	universityUpgrade = 10.0
+	#Base tax for Warehouse
+	#Range: 0.0 ~ 10000.0
+	warehouse = 10.0
+	#Tax increase per level for Warehouse
+	#Range: 0.0 ~ 10000.0
+	warehouseUpgrade = 4.0
+	#Base tax for Tavern
+	#Range: 0.0 ~ 10000.0
+	tavern = 14.0
+	#Tax increase per level for Tavern
+	#Range: 0.0 ~ 10000.0
+	tavernUpgrade = 6.0
+	#Base tax for Miner
+	#Range: 0.0 ~ 10000.0
+	miner = 11.0
+	#Tax increase per level for Miner
+	#Range: 0.0 ~ 10000.0
+	minerUpgrade = 5.0
+	#Base tax for Sawmill
+	#Range: 0.0 ~ 10000.0
+	sawmill = 10.0
+	#Tax increase per level for Sawmill
+	#Range: 0.0 ~ 10000.0
+	sawmillUpgrade = 3.0
+	#Base tax for Stonemason
+	#Range: 0.0 ~ 10000.0
+	stonemason = 12.0
+	#Tax increase per level for Stonemason
+	#Range: 0.0 ~ 10000.0
+	stonemasonUpgrade = 4.0
+	#Base tax for Florist
+	#Range: 0.0 ~ 10000.0
+	florist = 8.0
+	#Tax increase per level for Florist
+	#Range: 0.0 ~ 10000.0
+	floristUpgrade = 2.0
+	#Base tax for Enchanter
+	#Range: 0.0 ~ 10000.0
+	enchanter = 15.0
+	#Tax increase per level for Enchanter
+	#Range: 0.0 ~ 10000.0
+	enchanterUpgrade = 5.0
+	#Base tax for Hospital
+	#Range: 0.0 ~ 10000.0
+	hospital = 20.0
+	#Tax increase per level for Hospital
+	#Range: 0.0 ~ 10000.0
+	hospitalUpgrade = 8.0
+	#Base tax for Glassblower
+	#Range: 0.0 ~ 10000.0
+	glassblower = 10.0
+	#Tax increase per level for Glassblower
+	#Range: 0.0 ~ 10000.0
+	glassblowerUpgrade = 3.0
+	#Base tax for Dyer
+	#Range: 0.0 ~ 10000.0
+	dyer = 9.0
+	#Tax increase per level for Dyer
+	#Range: 0.0 ~ 10000.0
+	dyerUpgrade = 3.0
+	#Base tax for Mechanic
+	#Range: 0.0 ~ 10000.0
+	mechanic = 11.0
+	#Tax increase per level for Mechanic
+	#Range: 0.0 ~ 10000.0
+	mechanicUpgrade = 4.0
+	#Base tax for Plantation
+	#Range: 0.0 ~ 10000.0
+	plantation = 12.0
+	#Tax increase per level for Plantation
+	#Range: 0.0 ~ 10000.0
+	plantationUpgrade = 4.0
+	#Base tax for Graveyard
+	#Range: 0.0 ~ 10000.0
+	graveyard = 7.0
+	#Tax increase per level for Graveyard
+	#Range: 0.0 ~ 10000.0
+	graveyardUpgrade = 2.0
+	#Base tax for Beekeeper
+	#Range: 0.0 ~ 10000.0
+	beekeeper = 9.0
+	#Tax increase per level for Beekeeper
+	#Range: 0.0 ~ 10000.0
+	beekeeperUpgrade = 3.0
+	#Base tax for Nether Worker
+	#Range: 0.0 ~ 10000.0
+	netherworker = 15.0
+	#Tax increase per level for Nether Worker
+	#Range: 0.0 ~ 10000.0
+	netherworkerUpgrade = 6.0
+	#Base tax for Stone Smeltery
+	#Range: 0.0 ~ 10000.0
+	stonesmeltery = 12.0
+	#Tax increase per level for Stone Smeltery
+	#Range: 0.0 ~ 10000.0
+	stonesmelteryUpgrade = 5.0
+	#Base tax for Sifter
+	#Range: 0.0 ~ 10000.0
+	sifter = 10.0
+	#Tax increase per level for Sifter
+	#Range: 0.0 ~ 10000.0
+	sifterUpgrade = 4.0
+	#Base tax for Postbox
+	#Range: 0.0 ~ 10000.0
+	postbox = 8.0
+	#Tax increase per level for Postbox
+	#Range: 0.0 ~ 10000.0
+	postboxUpgrade = 2.0
+	#Base tax for Stash
+	#Range: 0.0 ~ 10000.0
+	stash = 5.0
+	#Tax increase per level for Stash
+	#Range: 0.0 ~ 10000.0
+	stashUpgrade = 1.0
+	#Base tax for School
+	#Range: 0.0 ~ 10000.0
+	school = 15.0
+	#Tax increase per level for School
+	#Range: 0.0 ~ 10000.0
+	schoolUpgrade = 5.0
+	#Base tax for Mystical Site
+	#Range: 0.0 ~ 10000.0
+	mysticalsite = 20.0
+	#Tax increase per level for Mystical Site
+	#Range: 0.0 ~ 10000.0
+	mysticalsiteUpgrade = 10.0
+	#Base tax for Simple Quarry
+	#Range: 0.0 ~ 10000.0
+	simplequarry = 15.0
+	#Tax increase per level for Simple Quarry
+	#Range: 0.0 ~ 10000.0
+	simplequarryUpgrade = 5.0
+	#Base tax for Medium Quarry
+	#Range: 0.0 ~ 10000.0
+	mediumquarry = 20.0
+	#Tax increase per level for Medium Quarry
+	#Range: 0.0 ~ 10000.0
+	mediumquarryUpgrade = 7.0
+	#Base tax for Large Quarry
+	#Range: 0.0 ~ 10000.0
+	largequarry = 25.0
+	#Tax increase per level for Large Quarry
+	#Range: 0.0 ~ 10000.0
+	largequarryUpgrade = 9.0
+	#Base tax for Kitchen
+	#Range: 0.0 ~ 10000.0
+	kitchen = 12.0
+	#Tax increase per level for Kitchen
+	#Range: 0.0 ~ 10000.0
+	kitchenUpgrade = 5.0
+	#Base tax for Gatehouse
+	#Range: 0.0 ~ 10000.0
+	gatehouse = 10.0
+	#Tax increase per level for Gatehouse
+	#Range: 0.0 ~ 10000.0
+	gatehouseUpgrade = 3.0
+

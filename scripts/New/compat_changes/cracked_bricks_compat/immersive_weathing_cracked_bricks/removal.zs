@@ -1,0 +1,1 @@
+furnace.removeByName("immersive_weathering:cracked_bricks");

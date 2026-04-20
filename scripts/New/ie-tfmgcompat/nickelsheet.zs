@@ -1,0 +1,2 @@
+craftingTable.addShapeless("nickelplatetosheet", <item:tfmg:nickel_sheet>, [<item:immersiveengineering:plate_nickel>]);
+craftingTable.addShapeless("leadplatetosheet", <item:tfmg:lead_sheet>, [<item:immersiveengineering:plate_lead>]);

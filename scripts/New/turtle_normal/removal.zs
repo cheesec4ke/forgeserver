@@ -1,0 +1,1 @@
+craftingTable.removeByName("computercraft:turtle_normal");

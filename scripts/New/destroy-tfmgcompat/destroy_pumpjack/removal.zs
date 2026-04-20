@@ -1,0 +1,1 @@
+<recipetype:create:mechanical_crafting>.removeByName("destroy:mechanical_crafting/pumpjack");

@@ -1,0 +1,1 @@
+<recipetype:create:crushing>.removeByName("create_netherless:netherite_fragment_by_crushing");

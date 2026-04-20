@@ -1,0 +1,11 @@
+
+["CC: VS Mod Config"]
+	#Is ExtendedShipAPI.teleport() enabled?
+	#Enable at your own Risk!
+	can_teleport = false
+	#Is ExtendedShipAPI only available for the Command Computer?
+	#This API is more powerful than the normal and advanced ShipAPI.
+	command_only = true
+	#Expose PhysShipImpl data from the previous physics ticks on game tick via CC: Tweaked's events?
+	expose_phys_tick = false
+

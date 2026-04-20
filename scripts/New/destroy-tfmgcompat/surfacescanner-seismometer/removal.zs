@@ -1,0 +1,1 @@
+<recipetype:create:mechanical_crafting>.remove(<item:tfmg:surface_scanner>);

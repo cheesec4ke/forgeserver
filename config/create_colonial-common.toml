@@ -1,0 +1,13 @@
+
+[features]
+	#Enable clipboard integration for viewing builder resources
+	enableClipboard = true
+	#Enable saving Create blocks in MineColonies blueprints
+	enableBlueprintSupport = true
+	#Enable Create-aware builder AI extensions
+	enableBuilderAI = true
+
+[debug]
+	#Enable debug logging (verbose output)
+	enableDebugLogging = false
+

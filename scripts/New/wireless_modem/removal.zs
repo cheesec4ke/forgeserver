@@ -1,0 +1,1 @@
+craftingTable.removeByName("computercraft:wireless_modem_normal");

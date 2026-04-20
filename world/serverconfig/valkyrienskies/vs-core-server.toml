@@ -1,0 +1,76 @@
+#Is udp enabled? If not, the server will only use TCP
+enableUdp = false
+#Ship load distance in blocks
+shipLoadDistance = 128.0
+#Ship unload distance in blocks
+shipUnloadDistance = 196.0
+#Port to attempt to establish UDP connections on
+udpPort = 25565
+
+["Drag Settings"]
+	#The drag coefficient used to represent a solid 1x1x1 cube. This is an exaggerated value by default due to the scale of builds in MC.
+	dragCoefficient = 2.18
+	#A static multiplier applied to drag forces. Useful for when your configured masses are higher/lower than the default.
+	dragMultiplier = 10.0
+	#Enable/Disable Drag on all bodies.
+	enableDrag = true
+	#Enable/Disable Lift on all bodies.
+	enableLift = true
+	#A static multiplier applied to lift forces. Useful for when your configured masses are higher/lower than the default.
+	liftMultiplier = 10.0
+	#Bias towards up/gravity for lift. Makes things act more arcade-y, but can cause loop-de-looping. Range: 0.0 (no bias) to 1.0 (full bias), but best between 0.3 and 0.7.
+	biasFactor = 0.3
+
+["Krunch Konfig"]
+	#Sets number of iterations per sub-steps used by Krunch Classic. Typically 1 is enough, increasing substeps is more substantial.
+	krunchIterations = 1
+	#The detail of the collision LOD of ships, higher values are more detailed but heavier to compute. Setting this to 0 disables Lod.
+	lodDetail = 8192
+	#Limit the max collision de-penetration speed so that rigid bodies don't go flying apart when they overlap
+	maxDePenetrationSpeed = 10.0
+	#Which backend to use.
+	#Allowed Values: KRUNCH_CLASSIC, KRUNCH_PHYSX, KRUNCH_JOLT
+	physicsBackend = "KRUNCH_CLASSIC"
+	#How fast the physics is running. 1.0 is full speed, 0.5 is 50% speed, etc.
+	physicsSpeed = 1.0
+	#Sets number of sub-steps used by Krunch
+	physicsSubSteps = 20
+	#How many threads are used by Krunch physics. When set to 0 Krunch will run everything on 1 thread, the same thread that executed krunch
+	physicsThreads = 8
+	#The maximum number of iterations used by the PhysX to resolve positions. Higher values are more accurate but heavier to compute
+	#Range: 1 ~ 30
+	positionIterations = 8
+	#The maximum number of iterations used by PhysX to resolve velocity. Higher values are more accurate but heavier to compute
+	#Range: 1 ~ 30
+	velocityIterations = 2
+	#How long ships are held in place after loading so physics and joints can stabilize. Set to 0 to disable.
+	shipLoadFreezeSeconds = 5.0
+
+["Physics Thread Settings"]
+	#default is 3, for 60 phys ticks per second
+	physicsTicksPerGameTick = 3
+	#Synchronize the physics thread and the game thread
+	synchronizePhysics = false
+	#Thread priority of terrain baking threads. 5 is default priority, higher is higher priority, lower is lower priority.
+	terrainBakingThreadPriority = 5
+	#Number of terrain baking threads, more is good for preventing stutters when flying fast ships. However, too many will overload the cpu which will lag the game.
+	terrainBakingThreads = 8
+	#Thread priority of terrain deletion threads. These are used to clean up memory, so they can be lower priority than.
+	terrainDeletionThreadPriority = 4
+	#Number of terrain deletion threads. Typically just 1 is fine.
+	terrainDeletionThreads = 1
+
+["Connectivity Settings (Experimental)"]
+	#Enable/Disable Block Corner Connectivity (WARNING! May significantly increase memory usage)
+	enableBlockCornerConnectivity = false
+	#Enable/Disable Block Edge Connectivity (WARNING! May significantly increase memory usage)
+	enableBlockEdgeConnectivity = true
+	#Enable/Disable Connectivity (May reduce memory usage. Use [enableSplitting] instead if you just want to disable ship splitting.)
+	enableConnectivity = true
+	#Enable/Disable Splitting (Disabling this setting will not prevent the use of Air Pockets.)
+	enableSplitting = false
+	#Enable/Disable World Connectivity (Experimental!)
+	enableWorldConnectivity = false
+	#Enable verbose logging of connectivity (May result in very large log files)
+	verboseConnectivityLogging = false
+

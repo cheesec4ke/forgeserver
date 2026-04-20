@@ -1,0 +1,13 @@
+{
+  "config_version": "2.0.19",
+  "config_datetime": "2026-03-16_14-29-18",
+  "general": {
+    "disable_all_structures": false,
+    "prevent_structure_overlap": false,
+    "enable_global_spacing_and_separation_modifier": false,
+    "global_spacing_and_separation_modifier": 1.0
+  },
+  "structure_namespaces": [],
+  "structures": [],
+  "structure_sets": []
+}

@@ -1,0 +1,1 @@
+<recipetype:create:crushing>.addRecipe("blackstone_crushing", [<item:minecraft:coal> % 2, <item:create_netherless:netherite_fragment> % 0.01], <item:minecraft:blackstone>, 200);

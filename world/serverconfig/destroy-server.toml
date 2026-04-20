@@ -1,0 +1,535 @@
+#.
+#Players in Creative mode are treated as if they are wearing Engineer's Goggles even if they are not
+automaticGoggles = true
+#.
+#Only show extra inventory slots in menus which are known not to cause problems
+#[Disabling will let extra slots show up in new menus]
+#[If you disable this and try a new menu from another mod, then tell me whether it crashes or not at https://github.com/petrolpark/Destroy/issues/1]
+extendedInventorySafeMode = true
+
+#.
+#Destroy's blocks
+[blocks]
+	#.
+	#.
+	#Inventory size of Mixed Explosives
+	#Range: 0 ~ 16
+	customExplosiveMixSize = 5
+	#.
+	#The capacity (in mB) of Beakers
+	#Range: > -2147483648
+	beakerCapacity = 500
+	#.
+	#The capacity (in mB) of Round-Bottomed Flasks
+	#Range: > -2147483648
+	roundBottomedFlaskCapacity = 500
+	#.
+	#The capacity (in mB) of Beakers
+	#Range: > -2147483648
+	measuringCylinderCapacity = 300
+	#.
+	#The volume of gas (in mB) Balloons can hold before popping
+	#Range: > -2147483648
+	balloonPoppingCapacity = 300
+
+	#.
+	#Bubble Cap
+	[blocks.bubbleCap]
+		#.
+		#[in mB]
+		#Fluid capacity of Bubble Caps
+		#[setting this too low may make some recpies impossible]
+		#Range: > 1
+		bubbleCapCapacity = 1000
+		#.
+		#[in ticks]
+		#How often distillation towers try and distill
+		#Range: > 1
+		bubbleCapRecipeFrequency = 100
+
+	#.
+	#Catalytic Converter
+	[blocks.catalyticConverter]
+		#.
+		#The proportion by which Fluids polluted through a Catalytic Converter have their potential pollution multiplied.
+		#Range: 0.0 ~ 3.4028234663852886E38
+		catalyticConverterReduction = 0.25
+
+	#.
+	#Centrifuge
+	[blocks.centrifuge]
+		#.
+		#[in mB]
+		#Fluid capacity of each of the Centrifuge's three tanks
+		#[setting this too low may make some recipes impossible]
+		#Range: > 1
+		centrifugeCapacity = 1000
+
+	#.
+	#Refrigerstrayter
+	[blocks.cooler]
+		#.
+		#[in ticks]
+		#Roughly the length of cooling time a Refrigerstrayter must have before it stops accepting more coolant
+		#Range: > 1
+		maximumCoolingTicks = 12000
+		#.
+		#A multiplier for the standard cooling-second-kelvin-per-joule of Refrigerstrayters
+		#[0 will disable Refrigerstrayters]
+		#Range: 0.0 ~ 3.4028234663852886E38
+		coolerEfficiency = 1.0
+		#.
+		#Whether to scale the efficiency of coolers with the purity of supplied refrigerants
+		coolerEnhancedByPurity = true
+
+	#.
+	#Dynamite
+	[blocks.dynamite]
+		#.
+		#[in blocks]
+		#The maximum distance to which a side of a Dyanmite explosive can extend
+		#Range: 1 ~ 128
+		dynamiteMaxRadius = 10
+		#.
+		#Whether Dynamite explosions can explode unbreakable blocks like Obsidian
+		dynamiteExplodesResistant = false
+
+	#.
+	#Dynamo
+	[blocks.dynamo]
+		#.
+		#Whether Dynamos can charge multiple Item Stacks at once.
+		dynamoBulkCharging = true
+		#.
+		#The factor by which the stress impact of a Dynamo is multiplied when it is an Arc Furnace
+		#Range: 0.0 ~ 3.4028234663852886E38
+		arcFurnaceStressMultiplier = 5.0
+		#.
+		#Whether Arc Furnaces can do vanilla Smelting recipes
+		arcFurnaceAllowsSmelting = false
+		#.
+		#Whether Arc Furnaces can do vanilla Blasting recipes
+		arcFurnaceAllowsBlasting = true
+
+	#.
+	#Pumpjack
+	[blocks.pumpjack]
+		#.
+		#[in mB]
+		#Fluid capacity of Pumpjacks
+		#Range: > 1
+		pumpjackCapacity = 2000
+		#.
+		#A multiplier for the standard mB-per-tick-per-RPM for Pumpjacks
+		#[0 will disable Pumpjacks]
+		#Range: 0.0 ~ 3.4028234663852886E38
+		pumpjackExtractionSpeed = 1.0
+
+	#.
+	#Redstone Programmer
+	[blocks.redstoneProgrammer]
+		#.
+		#The maximum number of channels a Redstone Programmer can have.
+		#Range: 0 ~ 64
+		redstoneProgrammerMaxChannels = 20
+		#.
+		#The shortest length (in ticks) a Redstone Programmer can change signal over.
+		#The lower this is, the greater the potential for players to cause lag.
+		#Range: 1 ~ 20
+		redstoneProgrammerMinTicksPerBeat = 2
+
+	#.
+	#Siphon
+	[blocks.siphon]
+		#.
+		#[in mB]
+		#Fluid capacity of Siphons
+		#Range: > 1
+		siphonCapacity = 4000
+
+	#.
+	#Tapper
+	[blocks.treeTap]
+		#.
+		#[in mB]
+		#Fluid capacity of Tappers
+		#Range: > 1
+		treeTapCapacity = 1000
+		#.
+		#A multiplier for the standard mB-per-tick-per-RPM for Tappers
+		#[0 will disable Tappers]
+		#Range: 0.0 ~ 3.4028234663852886E38
+		treeTapExtractionSpeed = 1.0
+
+	#.
+	#Vat
+	[blocks.vat]
+		#.
+		#Whether Vats explode if the pressure exceeds the maximum of the weakest block.
+		vatExplodesAtHighPressure = true
+		#.
+		#How many times per tick reactions and thermodynamics are simulated.
+		#Increasing this may cause lag. Decreasing it can cause flickering in Vats.
+		#Range: > -2147483648
+		simulationLevel = 10
+		#.
+		#The power supplied by kindled Blaze Burners to Vats and Basins
+		#Range: -3.4028234663852886E38 ~ 3.4028234663852886E38
+		blazeBurnerHeatingPower = 1.5E7
+		#.
+		#The power supplied by superheating Blaze Burners to Vats and Basins
+		#Range: -3.4028234663852886E38 ~ 3.4028234663852886E38
+		blazeBurnerSuperHeatingPower = 5.0E7
+		#.
+		#The power supplied by cooling Refrigerstraytors to Vats and Basins
+		#Range: -3.4028234663852886E38 ~ 3.4028234663852886E38
+		coolerHeatingPower = -3.0E7
+
+#.
+#The effects of pollution on the world
+[pollution]
+	#.
+	#.
+	#Releasing chemicals increases pollution, and pollution has effects on the world
+	enablePollution = true
+	#.
+	#The chance per tick that the Greenhouse level of the world will decrease
+	#Range: 0.0 ~ 1.0
+	pollutionGreenhouseDecrease = 0.0020000000949949026
+	#.
+	#The chance per tick that the Ozone_depletion level of the world will decrease
+	#Range: 0.0 ~ 1.0
+	pollutionOzone_depletionDecrease = 0.0020000000949949026
+	#.
+	#The chance per tick that the Smog level of the world will decrease
+	#Range: 0.0 ~ 1.0
+	pollutionSmogDecrease = 0.0020000000949949026
+	#.
+	#The chance per tick that the Acid_rain level of the world will decrease
+	#Range: 0.0 ~ 1.0
+	pollutionAcid_rainDecrease = 0.0020000000949949026
+	#.
+	#The chance per tick that the Radioactivity level of the world will decrease
+	#Range: 0.0 ~ 1.0
+	pollutionRadioactivityDecrease = 0.0020000000949949026
+	#.
+	#The chance per tick that the Smog level of two adjacent chunks will transfer
+	#Range: 0.0 ~ 1.0
+	pollutionSmogSpreadingRate = 0.0020000000949949026
+	#.
+	#The chance per tick that the Radioactivity level of two adjacent chunks will transfer
+	#Range: 0.0 ~ 1.0
+	pollutionRadioactivitySpreadingRate = 0.0020000000949949026
+	#.
+	#The Smog level transferred between two adjacent chunks
+	#[If set to 1.0, the two chunks will immediately equalize]
+	#Range: 0.0 ~ 1.0
+	pollutionSmogSpreadingAmount = 0.004999999888241291
+	#.
+	#The Radioactivity level transferred between two adjacent chunks
+	#[If set to 1.0, the two chunks will immediately equalize]
+	#Range: 0.0 ~ 1.0
+	pollutionRadioactivitySpreadingAmount = 0.004999999888241291
+
+	#.
+	[pollution."Visual Changes"]
+		#.
+		#The sky and grass turn browner the higher the Smog level
+		smog = true
+		#.
+		#The rain turns greener the higher the Acid Rain level
+		rainColorChanges = true
+
+	#.
+	[pollution."Gameplay Changes"]
+		#.
+		#Villagers increase their prices the higher the Smog level
+		villagersIncreasePrices = true
+		#.
+		#Fishing yields fewer fish and more junk the higher the Smog level
+		fishingAffected = true
+		#.
+		#Mobs will be more likely to fail to breed the higher the Smog level
+		breedingAffected = true
+		#.
+		#Crops are less likely to grow the higher the Smog, Greenhouse Gas and Acid Rain levels
+		growingAffected = true
+		#.
+		#Bonemeal is more likely to fail the higher the Smog, Greenhouse Gas and Acid Rain levels
+		#growingAffected must also be true
+		bonemealingAffected = true
+		#.
+		#Rain is more likely to kill plants and grass the higher the Acid Rain level
+		rainBreaksBlocks = true
+		#.
+		#Outdoor temperature (which affects Distillation Towers and Vats) increases with Greenhouse Gas and Ozone Depletion levels
+		temperatureAffected = true
+		#.
+		#The likelihood of getting the cancer awareness pop-up from the sun increases with the Ozone Depletion level
+		ozoneDepletionGivesCancer = true
+		#.
+		#Whether growing trees decreases Smog, Greenhouse Gas and Acid Rain levels
+		growingTreesDecreasesPollution = true
+		#.
+		#Whether lightning strikes generate ozone, decreasing the Ozone Depletion level
+		lightningRegeneratesOzone = true
+		#.
+		#Whether the level of Ozone Depletion increases the amount of UV power supplied to Vats by the sun
+		vatUVPowerAffected = true
+
+#.
+#Destroy's drugs and medicines
+[substances]
+	#.
+	#.
+	#[in seconds]
+	#How far in the past your position will be set when drinking Chorus Wine.
+	#Range: 1 ~ 60
+	teleportTime = 20
+	#.
+	#How many half-hearts using an Aspirin Syringe heals
+	#Range: 0.0 ~ 3.4028234663852886E38
+	aspirinHeal = 5.0
+	#.
+	#Whether burning Iodine will release Dragon's Breath
+	burnIodineForDragonsBreath = true
+	#.
+	#How many ticks it takes for Sodium to rust
+	#Range: > 1
+	sodiumDecayTime = 600
+	#.
+	#The base number of ticks it takes for Quicklime to turn into Calcium Carbonate
+	#Range: > 1
+	quicklimeBaseDecayTime = 12000
+
+	#.
+	#Baby Blue
+	[substances.babyBlue]
+		#.
+		#[0 to disable this feature]
+		#Each level corresponds to an additional second of withdrawal.
+		#Range: > 0
+		maxAddictionLevel = 590
+		#.
+		#The proportion by which mining speed is "boosted" for every level of Baby Blue Withdrawal
+		#For example, -0.3 gives -30% per level
+		#Range: 1.401298464324817E-45 ~ 3.4028234663852886E38
+		babyBlueMiningSpeedBonus = 1.401298464324817E-45
+		#.
+		#Conserve the level of Baby Blue Addiction a player has when they die
+		#[This will be overriden as true if the Game Rule keepInventory is true]
+		keepBabyBlueAddictionOnDeath = true
+
+	#.
+	#Alcohol
+	[substances.alcohol]
+		#.
+		#[in ticks]
+		#How long each additional level of inebriation adds.
+		#Range: > 0
+		inebriationDuration = 1200
+		#.
+		#[in ticks]
+		#How long each level of inebriation adds to the Hangover effect.
+		#Range: > 0
+		hangoverDuration = 1200
+		#.
+		#How much Entities will slip when inebriated.
+		#Range: 0.0 ~ 1.0
+		drunkenSlipping = 0.699999988079071
+		#.
+		#The volume threshold for sounds from the source Master to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageMasterThreshold = 0.5
+		#.
+		#The volume threshold for sounds from the source Music to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageMusicThreshold = 1.0
+		#.
+		#The volume threshold for sounds from the source Records to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageRecordsThreshold = 0.5
+		#.
+		#The volume threshold for sounds from the source Weather to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageWeatherThreshold = 0.5
+		#.
+		#The volume threshold for sounds from the source Blocks to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageBlocksThreshold = 0.5
+		#.
+		#The volume threshold for sounds from the source Hostile to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageHostileThreshold = 0.5
+		#.
+		#The volume threshold for sounds from the source Neutral to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageNeutralThreshold = 1.0
+		#.
+		#The volume threshold for sounds from the source Players to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamagePlayersThreshold = 1.0
+		#.
+		#The volume threshold for sounds from the source Ambient to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageAmbientThreshold = 1.0
+		#.
+		#The volume threshold for sounds from the source Voice to damage entities with hangovers
+		#[1 will disable damage for that sound source]
+		#Range: 0.0 ~ 1.0
+		hangoverDamageVoiceThreshold = 1.0
+		#.
+		#The damage done by sounds from the source Master to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageMaster = 1.0
+		#.
+		#The damage done by sounds from the source Music to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageMusic = 1.0
+		#.
+		#The damage done by sounds from the source Records to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageRecords = 1.0
+		#.
+		#The damage done by sounds from the source Weather to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageWeather = 1.0
+		#.
+		#The damage done by sounds from the source Blocks to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageBlocks = 1.0
+		#.
+		#The damage done by sounds from the source Hostile to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageHostile = 1.0
+		#.
+		#The damage done by sounds from the source Neutral to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageNeutral = 1.0
+		#.
+		#The damage done by sounds from the source Players to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamagePlayers = 1.0
+		#.
+		#The damage done by sounds from the source Ambient to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageAmbient = 1.0
+		#.
+		#The damage done by sounds from the source Voice to entities with hangovers
+		#Range: 0.0 ~ 3.4028234663852886E38
+		hangoverDamageVoice = 1.0
+		#.
+		#[in blocks]
+		#The square radius away from a noise which will be checked for entities with hangovers
+		#Range: 0.0 ~ 128.0
+		hangoverNoiseTriggerRadius = 5.0
+
+	#.
+	#Creatine
+	[substances.creatine]
+		#.
+		#The number of additional Inventory Slots granted by taking Creatine
+		#Range: 0 ~ 256
+		creatineExtraInventorySize = 15
+		#.
+		#The maximum number of extra Hotbar Slots granted by taking Creatine
+		#Range: 0 ~ 32
+		creatineExtraHotbarSlots = 3
+		#.
+		#[This will be overriden as true if the Game Rule keepInventory is true]
+		#[This will only affect the extra inventory slots due to Creatine, other mods may handle it differently]
+		keepCreatineExtraInventorySizeOnDeath = false
+
+#.
+#Destroy's armor and tools
+[thisnameshouldnotexist]
+
+	#.
+	#.
+	#Personal protective equipment
+	[thisnameshouldnotexist.ppe]
+		#.
+		#Durability of Lab Goggles
+		#Range: > 1
+		laboratoryGogglesDurability = 512
+		#.
+		#Durability of Solid Gold Lab Goggles
+		#Range: > 1
+		goldLaboratoryGogglesDurability = 1024
+		#.
+		#Durability of Paper Masks
+		#Range: > 1
+		paperMaskDurability = 256
+		#.
+		#Durability of Gas Masks
+		#Range: > 1
+		gasMaskDurability = 512
+		#.
+		#Durability of Lab Coats
+		#Range: > 1
+		labCoatDurability = 512
+
+#.
+#Compatibility with other mods
+[compatibility]
+
+	#.
+	#.
+	#Create: The Factory Must Grow
+	[compatibility.TFMG]
+		#.
+		#Allow applicable TFMG distillation recipes in Destroy's Bubble Caps
+		TFMGDistillationInDestroy = true
+		#.
+		#Allow Destroy distillation recipes in TFMG's Distillation Towers
+		destroyDistillationInTFMG = true
+
+	#.
+	#Create: Big Cannons
+	[compatibility.createBigCannons]
+		#.
+		#Inventory size of Mixed Charges
+		#Range: 0 ~ 16
+		customExplosiveMixChargeSize = 9
+		#.
+		#Inventory size of Mixed Shells
+		#Range: 0 ~ 16
+		customExplosiveMixShellSize = 9
+
+	#.
+	#Farmer's Delight
+	[compatibility.farmersDelight]
+		#.
+		#Cutting onions on a Farmer's Delight Cutting Board causes the player to cry
+		cuttingOnionsCausesCrying = true
+
+#.
+#Parameters and abilities of Destroy's kinetic mechanisms
+[kinetics]
+
+	[kinetics.stressValues]
+
+		#.
+		#.
+		#Fine tune the kinetic stats of individual components
+		[kinetics.stressValues.v1]
+
+			#.
+			#.
+			#[in Stress Units]
+			#Configure the individual stress impact of mechanical blocks. Note that this cost is doubled for every speed increase it receives.
+			[kinetics.stressValues.v1.impact]
+				mechanical_sieve = 0.5
+				dynamo = 6.0
+				centrifuge = 5.0
+				pumpjack = 8.0
+

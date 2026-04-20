@@ -1,0 +1,87 @@
+#Air density at which the air compressor will start generating aether. Setting it to 0 or a negative number will disable helium generation
+airCompressorHeliumAirDensity = 0.3
+#The max amount of pressure that the air compressor will generate air for. In Pa
+airCompressorMaxPressure = 1000000.0
+#The amount of air (in kg) that the air compressor produces per tick at sea level and 1 rpm
+airCompressorSpeed = 1.0E-4
+allowWrenchingActivatedPhysBearing = false
+#Force multiplier for balloons. Realism is 1.0, default is 1000.0. Range: > 0.0
+balloonForceMult = 50.0
+#Whether or not blade controllers consume the durability of the blades inside while rotating at high speeds.
+bladeControllerUsesDurability = false
+#Temperature for gas exhaust to trigger bulk blasting. Default is 1000K (ceramic firing)
+bulkBlastingTemp = 1000
+#Temperature for gas exhaust to trigger bulk smoking. Default is 500K (baking oven)
+bulkSmokingTemp = 500
+#Max collision events per tick. Dumps collision event queue if amount is bigger. Default is 100
+collisionSoundEffectMax = 100
+#Enable collision sound effects
+collisionSoundEffects = false
+#Enable verbose debug logging
+debugMode = false
+encasedFanForceMul = 40.0
+forceMulPerSailInPropeller = 5.0
+gasThrusterForceMul = 200.0
+#Controls how fast air pocket temperature equalizes with the ambient temperature; lower values simulate thick insulation, while higher values cause rapid cooling or heating. Default 0.001
+#Range: 0.0 ~ 1.0
+heatTransferCoefficient = 0.01
+#Temperature for the gas heater to act like a heated blaze burner. Default is 1000K (ceramic firing)
+heaterKindledTemp = 1000
+#Temperature for the gas heater to act like a superheated blaze burner. Default is 1500K (real metallurgy)
+heaterSeethingTemp = 1500
+#Temperature for the gas heater to act like a passive heat source (campfires, dormant blaze burners). Default is 500K (baking oven)
+heaterSmoulderingTemp = 500
+#The length of the raycast made by the Gas Nozzle when attempting to find a valid balloon ceiling.
+hotAirBalloonMaxRaycastDistance = 64.0
+#The maximum surface area (in blocks) that the hot air balloon floodfill will scan when trying to determine the balloon's exterior.
+hotAirBalloonMaxScanSurface = 100000.0
+#The maximum volume (in blocks) that the hot air balloon floodfill will scan when trying to determine the balloon's interior.
+hotAirBalloonMaxScanVolume = 100000.0
+#The lazytick rate for Kelvin node block entity updates
+kelvinNodeBlockEntityLazyTickRate = 10
+#Kelvin sub steps (per Tick)
+kelvinSubSteps = 10
+#The max size that a propeller blade can reach. Sizes higher than this will refuse to craft.
+maxBladeSize = 4.0
+#Max Gravitron mass in 1000 kg
+maxGravitronMass = 256
+#The maximum distance (in blocks) allowed between two Universal Joints while connected.
+maxUniversalJointDistance = 10.0
+#Sets the gas retention efficiency of the balloon material; lower values simulate airtight rubber/synthetic, while higher values represent porous fabrics. Default 0.001.
+#Range: 0.0 ~ 1.0
+permeabilityConstant = 0.01
+#Effectiveness scalar for reaction wheels. Higher value means a single reaction wheel can better control an entire ship, regardless of its mass. Default value is 0.1.
+#Range: 0.001 ~ 1.0
+reactionWheelEffectiveness = 1.0
+sugarRocketBlockThrust = 10000.0
+#Maximum range (in blocks) the survival gravitron will interact with ships
+#Range: 1.0 ~ 1000.0
+survivalGravitronMaxRange = 20.0
+#Multiplier applied to ship mass when yeeting (left-clicking) with the survival gravitron
+#Range: 0.0 ~ 10000.0
+survivalGravitronYeetForce = 1000.0
+unlockedModeOmegaErrorMultiplier = 50.0
+#Force multiplier when no rpm is given
+unlockedModeRotationResistanceMultiplier = 1.0
+#Wanderlite blocks exert enough force to lift their own weight, times this multiplier.
+wanderOreForceMultiplier = 2.0
+#Whether the (smart) flap bearing peripheral can use setAngle without rotational power
+cheatFlapBearingPeripheral = false
+#Whether the generic kelvin peripheral can move gas/heat through only a peripheral connection
+cheatKelvinPeripheral = false
+#Duct-like volume. The volume used for ducts, valves, exhausts, etc.
+ductVolme = 0.4
+#Maximum amount of blocks a flap bearing can assemble
+#Range: > 0
+flapBearingMaxSize = 16
+#Speed multiplier for the gas nozzle pointer, default is 0.5. Range: > 0.0
+gasNozzleSensitivity = 0.5
+#The gas physics solver used by Kelvin. Options: CLASSIC, JACOBI_SIMPLIFIED, JACOBI
+#Allowed Values: CLASSIC, JACOBI_SIMPLIFIED, JACOBI
+kelvinSolver = "JACOBI"
+#The density mult of wanderlite ore in meteors
+meteor_density = 0.0
+#Maximum amount of blocks a smart flap bearing can assemble
+#Range: > 0
+smartFlapBearingMaxSize = 24
+

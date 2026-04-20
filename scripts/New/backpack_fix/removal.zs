@@ -1,0 +1,1 @@
+craftingTable.removeByName("sophisticatedbackpacks:backpack");

@@ -1,0 +1,264 @@
+
+#SupplyLines Server Configuration
+[server]
+
+	#Timing and Performance Settings
+	[server.timing]
+
+		#Stock Keeper work cycle intervals
+		[server.timing.workerCycle]
+			#Default interval for rack rescan when no worker skill applies (ticks).
+			#20 ticks = 1 second.
+			#Range: 20 ~ 2400
+			defaultRescanIntervalTicks = 400
+			#Default interval for stock snapshot updates (ticks).
+			#Range: 10 ~ 1200
+			defaultStockSnapshotIntervalTicks = 200
+			#Default interval for restock policy checks (ticks).
+			#Range: 100 ~ 3600
+			defaultRestockIntervalTicks = 600
+			#Interval for inventory signature refresh checks (ticks).
+			#Default 40 = 2 seconds.
+			#Range: 10 ~ 200
+			defaultInvSigIntervalTicks = 40
+			#Interval for staging process when no skill manager available (ticks).
+			#Default 60 = 3 seconds.
+			#Range: 10 ~ 300
+			defaultStagingProcessIntervalTicks = 60
+			#Minimum interval between request reassignment cycles (ticks).
+			#Prevents stock changes and inventory updates from triggering
+			#back-to-back reassignments. Default 100 = 5 seconds.
+			#Range: 20 ~ 600
+			minReassignmentIntervalTicks = 100
+
+		#Order lifecycle and delivery timing
+		[server.timing.orderProcessing]
+			#Timeout for staging requests before cancellation (ticks).
+			#Default 1200 = 60 seconds.
+			#Range: 200 ~ 6000
+			stagingTimeoutTicks = 1200
+			#Window for batching multiple requests together (ticks).
+			#Default 60 = 3 seconds.
+			#Range: 10 ~ 300
+			bufferWindowTicks = 60
+			#Default assumed delivery time for ETA calculations (ticks).
+			#Default 1200 = 1 minute.
+			#Range: 100 ~ 2400
+			defaultDeliveryTicks = 1200
+			#Fallback timeout after ETA before expiring undetected orders (ticks).
+			#With postbox watching, this is only used when arrivals can't be detected.
+			#Default 12000 = 10 minutes. Increase for very long-distance deliveries.
+			#Range: 200 ~ 72000
+			orderExpiryBufferTicks = 12000
+
+		#Display refresh timing
+		[server.timing.displayTiming]
+			#Interval for display board updates (ticks).
+			#Default 100 = 5 seconds.
+			#Range: 20 ~ 600
+			displayUpdateIntervalTicks = 100
+
+	#General Settings
+	[server.general]
+
+		#Building Level Requirements
+		[server.general.buildingLevels]
+			#Building level required for Stock Ticker functionality.
+			#Enables access to the colony stock network.
+			#Restock Policy functionality unlocks at the next level (this + 1).
+			#Range: 1 ~ 4
+			stockTickerRequiredLevel = 4
+
+		#System Limits
+		[server.general.limits]
+			#Radius for scanning auxiliary blocks like Stock Tickers (blocks).
+			#Range: 8 ~ 64
+			auxiliaryScanRadius = 16
+
+		#Request System Settings
+		[server.general.requestSystem]
+			#Priority for SupplyLines resolvers in the MineColonies request system.
+			#Lower values = higher priority.
+			#Range: 1 ~ 200
+			resolverPriority = 80
+
+	#AI and Movement Settings
+	[server.ai]
+
+		#Core AI parameters
+		[server.ai.core]
+			#Tick rate for the Stock Keeper AI state machine (game ticks).
+			#Lower values = more responsive but higher CPU usage.
+			#Requires world reload to take effect.
+			#Range: 1 ~ 200
+			stateMachineTickRate = 20
+			#Walking speed multiplier for Stock Keeper AI.
+			#Range: 0.5 ~ 2.0
+			walkSpeed = 1.0
+			#Squared distance threshold for arrival detection (blocks squared).
+			#Default 4.0 = 2 blocks.
+			#Range: 1.0 ~ 16.0
+			arriveDistanceSq = 4.0
+			#Duration of inspection pause at patrol points (state machine ticks).
+			#Actual game ticks = this value * stateMachineTickRate.
+			#Range: 1 ~ 20
+			inspectDurationTicks = 4
+
+		#Stock Keeper idle behavior
+		[server.ai.idle]
+			#Stock Keeper occasionally checks on racks when not busy
+			enableIdleWander = true
+			#How often to wander (higher = more frequent, 0 = never)
+			#Range: 0 ~ 100
+			idleWanderChance = 3
+			#Minimum seconds between wanders
+			#Range: 1 ~ 60
+			idleWanderCooldown = 10
+			#Seconds spent looking at each location
+			#Range: 1 ~ 10
+			idleInspectDuration = 3
+			#Patrol locations in random order
+			randomPatrol = true
+
+	#Skill-Based Interval Scaling
+	#Controls how worker skills reduce action intervals (faster = more efficient).
+	#Formula: interval = max(min, base - skill * multiplier)
+	#  - base: Starting interval (ticks) for a worker with 0 skill
+	#  - min: Fastest possible interval (floor) regardless of skill
+	#  - multiplier: How much each skill point reduces the interval
+	#Example: base=400, min=60, mult=6.8, skill=50 -> max(60, 400-50*6.8) = max(60, 60) = 60 ticks
+	[server.skillScaling]
+
+		#Rescan interval: How often the Stock Keeper checks racks for inventory changes.
+		#Affected by Strength skill. Lower = faster detection of new items.
+		[server.skillScaling.rescan]
+			#Interval (ticks) at skill level 0. Default 400 = 20 seconds.
+			#Range: 60 ~ 1200
+			base = 400
+			#Minimum interval (ticks) at max skill. Default 60 = 3 seconds.
+			#Range: 10 ~ 200
+			min = 60
+			#Ticks reduced per Strength point.
+			#Range: 0.1 ~ 20.0
+			strengthMultiplier = 6.8
+
+		#Snapshot interval: How often stock levels are updated for display boards.
+		#Affected by Dexterity skill. Lower = more responsive stock displays.
+		[server.skillScaling.snapshot]
+			#Interval (ticks) at skill level 0. Default 200 = 10 seconds.
+			#Range: 20 ~ 600
+			base = 200
+			#Minimum interval (ticks) at max skill. Default 20 = 1 second.
+			#Range: 5 ~ 100
+			min = 20
+			#Ticks reduced per Dexterity point.
+			#Range: 0.1 ~ 15.0
+			dexterityMultiplier = 3.6
+
+		#Staging interval: How often pending orders are processed for fulfillment.
+		#Affected by Strength skill. Lower = faster order processing.
+		[server.skillScaling.staging]
+			#Interval (ticks) at skill level 0. Default 60 = 3 seconds.
+			#Range: 10 ~ 200
+			base = 60
+			#Minimum interval (ticks) at max skill. Default 10 = 0.5 seconds.
+			#Range: 1 ~ 50
+			min = 10
+			#Ticks reduced per Strength point.
+			#Range: 0.1 ~ 5.0
+			strengthMultiplier = 1.0
+
+		#Restock interval: How often restock policies are checked for items to order.
+		#Affected by Dexterity skill. Lower = faster restocking of low stock items.
+		[server.skillScaling.restock]
+			#Interval (ticks) at skill level 0. Default 600 = 30 seconds.
+			#Range: 200 ~ 1800
+			base = 600
+			#Minimum interval (ticks) at max skill. Default 200 = 10 seconds.
+			#Range: 50 ~ 400
+			min = 200
+			#Ticks reduced per Dexterity point.
+			#Range: 0.5 ~ 30.0
+			dexterityMultiplier = 8.0
+
+	#XP Award Configuration
+	#Formula: base + min(count / divisor, cap)
+	[server.xpAwards]
+
+		#XP for Stack, Food, and Burnable requests
+		[server.xpAwards.stack]
+			#Base XP awarded
+			#Range: 0.0 ~ 10.0
+			base = 1.0
+			#Divisor for scaling XP by item count
+			#Range: 1.0 ~ 64.0
+			divisor = 16.0
+			#Maximum bonus XP from item count
+			#Range: 0.0 ~ 20.0
+			cap = 4.0
+
+		#XP for Tag requests
+		[server.xpAwards.tag]
+			#Base XP awarded
+			#Range: 0.0 ~ 10.0
+			base = 1.5
+			#Divisor for scaling XP by item count
+			#Range: 1.0 ~ 64.0
+			divisor = 16.0
+			#Maximum bonus XP from item count
+			#Range: 0.0 ~ 20.0
+			cap = 4.0
+
+		#XP for Tool requests
+		[server.xpAwards.tool]
+			#Fixed XP awarded per tool delivery
+			#Range: 0.0 ~ 10.0
+			fixed = 2.0
+
+		#XP for StackList requests
+		#Formula: base + min(itemCount / itemDivisor, itemCap) + min(typeCount / typeDivisor, typeCap)
+		[server.xpAwards.stackList]
+			#Base XP awarded
+			#Range: 0.0 ~ 10.0
+			base = 2.0
+			#Divisor for scaling XP by total item count
+			#Range: 1.0 ~ 64.0
+			itemDivisor = 16.0
+			#Maximum bonus XP from item count
+			#Range: 0.0 ~ 10.0
+			itemCap = 2.0
+			#Divisor for scaling XP by number of item types
+			#Range: 1.0 ~ 16.0
+			typeDivisor = 4.0
+			#Maximum bonus XP from item types
+			#Range: 0.0 ~ 10.0
+			typeCap = 2.0
+
+	#Display Board Settings
+	[server.display]
+		#Maximum length for item names on display boards before truncation.
+		#Range: 6 ~ 32
+		itemNameTruncation = 12
+		#Threshold in seconds for ETA format.
+		#Below this value shows seconds, above shows minutes.
+		#Range: 10 ~ 300
+		etaFormatThresholdSeconds = 60
+
+	#Speculative Ordering Settings
+	#Allows Stock Keeper to order items from remote suppliers
+	#when colony requests cannot be fulfilled locally.
+	#Requires per-supplier opt-in via the 'Speculative' checkbox in the Suppliers UI.
+	[server.speculativeOrdering]
+		#Master switch for speculative ordering feature.
+		#When disabled, speculative ordering is completely off regardless of per-supplier settings.
+		enableSpeculativeOrdering = true
+		#Delay before triggering speculative order for unfulfilled request (ticks).
+		#Default 1200 = 60 seconds. Gives time for items to arrive normally.
+		#Shorter delays = more responsive but may order prematurely.
+		#Range: 200 ~ 12000
+		speculativeDelayTicks = 1200
+		#How often to check for unfulfilled requests eligible for speculative ordering (ticks).
+		#Default 200 = 10 seconds.
+		#Range: 40 ~ 1200
+		speculativeCheckIntervalTicks = 200
+

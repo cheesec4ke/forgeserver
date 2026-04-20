@@ -1,0 +1,5 @@
+
+[logbegone]
+	phrases = ["Collision box is too big!", "OpenGL debug message: id=3", "Detected setBlock in a far chunk", "Wind update"]
+	regex = ["Collision box is too big!", "OpenGL debug message: id=3", "Detected setBlock in a far chunk", "Wind update"]
+
