@@ -311,7 +311,7 @@
         yungs-extras:1.20-Forge-4.0.3
         yungs-menu-tweaks:1.20.1-Forge-1.0.2
         zeta:1.20.1-1.0-31";
-      "CF_API_KEY" = (builtins.readFile /home/nix/forgeserver/cf-api-key);
+      "CF_API_KEY" = (builtins.readFile ./cf-api-key);
       "CURSEFORGE_FILES" =
         "advanced-chimneys:7514477
         alexs-delight:5028450
