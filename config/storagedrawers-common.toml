@@ -56,9 +56,9 @@
 	#Allows drawers with contents to be freely carried when heavy drawers is enabled.
 	enablePortabilityUpgrade = true
 	#Allows a single drawer to connect to a controller remotely.
-	enableRemoteUpgrade = true
+	enableRemoteUpgrade = false
 	#Allows a drawer and all drawers connected to it to connect to a controller remotely.
-	enableRemoteGroupUpgrade = true
+	enableRemoteGroupUpgrade = false
 
 [Integration]
 	#When true, shows quantity as NxS + R (by stack size) rather than count
