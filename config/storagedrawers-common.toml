@@ -27,7 +27,7 @@
 	#Drawers can still only be inserted into a block with enough capacity for the items held.
 	forceDetachedDrawersMaxCapacityCheck = true
 	#If enabled, carrying filled drawers in your inventory gives slowness debuff, unless a Portability Upgrade is used.
-	heavyDrawers = false
+	heavyDrawers = true
 	#If enabled, players can lock drawer interactions to just themselves.
 	enablePersonalKey = true
 
@@ -54,7 +54,7 @@
 	#Causes drawers to accept but void compatible items when they are filled to capacity.
 	enableVoidUpgrade = true
 	#Allows drawers with contents to be freely carried when heavy drawers is enabled.
-	enablePortabilityUpgrade = true
+	enablePortabilityUpgrade = false
 	#Allows a single drawer to connect to a controller remotely.
 	enableRemoteUpgrade = false
 	#Allows a drawer and all drawers connected to it to connect to a controller remotely.
