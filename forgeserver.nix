@@ -218,6 +218,7 @@
         modonomicon:1.20.1-1.79.3
         mcda:5.0.2
         moonlight:4f5Vm2TE
+        morejs:1.20.1-0.10.1+forge
         music-maker-mod:1.20.1-1.0.3
         mutil:6.2.0
         necronomicon:1.6.0+1.20.1
@@ -295,6 +296,7 @@
         wesleys-roguelike-dungeons:Md7628mU
         what-are-they-up-to:GpiXMxvP
         what-are-you-voting-for-2023:aGgzILtB
+        wither-reincarnated:1.0.5
         yacl:3.6.6+1.20.1-forge
         yungs-api:1.20-Forge-4.0.6
         yungs-better-desert-temples:1.20-Forge-3.0.3
@@ -340,10 +342,12 @@
         ftb-library-forge:7296748
         ftb-teams-forge:7499810
         kubejs-ars-nouveau:4862554
+        kubejs-immersive-engineering-unofficial:6593605
         large-ore-deposits:7657639
         minecolonies:7312689
         multi-piston:5204918
         placebo:6274231
+        pollution-of-create:6778279
         pollution-of-the-realms:7723739
         sdm-economy:6689080
         structurize:7277326
